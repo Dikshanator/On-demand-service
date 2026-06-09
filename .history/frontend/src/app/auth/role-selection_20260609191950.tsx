@@ -185,10 +185,7 @@ export default function RoleSelectionScreen() {
             hitSlop={12}
             accessibilityRole="button"
             accessibilityLabel={`Switch to ${isDark ? "light" : "dark"} mode`}
-            style={({ pressed }) => [
-              styles.themeToggleButton,
-              pressed && { opacity: 0.75 },
-            ]}
+            style={({ pressed }) => [pressed && { opacity: 0.75 }]}
           >
             <Text style={{ color: theme.text, fontSize: 14 }}>
               {isDark ? "🌙" : "☀️"}

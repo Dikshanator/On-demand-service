@@ -186,7 +186,7 @@ export default function RoleSelectionScreen() {
             accessibilityRole="button"
             accessibilityLabel={`Switch to ${isDark ? "light" : "dark"} mode`}
             style={({ pressed }) => [
-              styles.themeToggleButton,
+
               pressed && { opacity: 0.75 },
             ]}
           >
