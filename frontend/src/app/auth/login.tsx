@@ -140,7 +140,7 @@ export default function LoginScreen() {
         <View className="px-5 gap-3 mb-8">
           <Pressable className="flex-row items-center justify-center border border-gray-300 rounded-2xl py-3 gap-2">
             <Image 
-              source={require('../../assets/images/Img-Google-margin@2x.png')} 
+              source={require('../../../assets/images/Img-Google-margin@2x.png')} 
               className="w-7 h-5"
               resizeMode="contain"
             />
@@ -149,7 +149,7 @@ export default function LoginScreen() {
           
           <Pressable className="flex-row items-center justify-center border border-gray-300 rounded-2xl py-3 gap-2">
             <Image 
-              source={require('../../assets/images/Img-Apple-margin@2x.png')} 
+              source={require('../../../assets/images/Img-Apple-margin@2x.png')} 
               className="w-7 h-5"
               resizeMode="contain"
             />
