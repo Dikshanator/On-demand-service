@@ -1,22 +1,16 @@
-import * as Device from "expo-device";
-import { Platform, StyleSheet, Pressable } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import * as Device from 'expo-device';
+import { Platform, StyleSheet, Pressable } from 'react-native';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { AnimatedIcon } from "@/components/animated-icon";
-import { HintRow } from "@/components/hint-row";
-import { ThemedText } from "@/components/themed-text";
-import { ThemedView } from "@/components/themed-view";
-import { WebBadge } from "@/components/web-badge";
-import {
-  BottomTabInset,
-  MaxContentWidth,
-  Spacing,
-  Colors,
-} from "@/constants/theme";
-import { useRouter } from "expo-router";
+import { AnimatedIcon } from '@/components/animated-icon';
+import { HintRow } from '@/components/hint-row';
+import { ThemedText } from '@/components/themed-text';
+import { ThemedView } from '@/components/themed-view';
+import { WebBadge } from '@/components/web-badge';
+import { BottomTabInset, MaxContentWidth, Spacing, Colors } from '@/constants/theme';
 
 function getDevMenuHint() {
-  if (Platform.OS === "web") {
+  if (Platform.OS === 'web') {
     return <ThemedText type="small">use browser devtools</ThemedText>;
   }
   if (Device.isDevice) {
@@ -26,7 +20,7 @@ function getDevMenuHint() {
       </ThemedText>
     );
   }
-  const shortcut = Platform.OS === "android" ? "cmd+m (or ctrl+m)" : "cmd+d";
+  const shortcut = Platform.OS === 'android' ? 'cmd+m (or ctrl+m)' : 'cmd+d';
   return (
     <ThemedText type="small">
       press <ThemedText type="code">{shortcut}</ThemedText>
@@ -35,8 +29,6 @@ function getDevMenuHint() {
 }
 
 export default function HomeScreen() {
-  const router = useRouter();
-
   return (
     <ThemedView style={styles.container}>
       <SafeAreaView style={styles.safeArea}>
@@ -48,20 +40,11 @@ export default function HomeScreen() {
         </ThemedView>
 
         <Pressable
-          style={({ pressed }) => [
-            styles.getStartedButton,
-            pressed && styles.getStartedButtonPressed,
-          ]}
-          onPress={() => router.push("/onboarding")}
+          style={({ pressed }) => [styles.getStartedButton, pressed && styles.getStartedButtonPressed]}
+          onPress={() => console.log('Get started pressed')}
         >
           {({ pressed }) => (
-            <ThemedText
-              type="code"
-              style={[
-                styles.getStartedText,
-                pressed && styles.getStartedTextPressed,
-              ]}
-            >
+            <ThemedText type="code" style={[styles.getStartedText, pressed && styles.getStartedTextPressed]}>
               Get started
             </ThemedText>
           )}
@@ -79,7 +62,7 @@ export default function HomeScreen() {
           />
         </ThemedView>
 
-        {Platform.OS === "web" && <WebBadge />}
+        {Platform.OS === 'web' && <WebBadge />}
       </SafeAreaView>
     </ThemedView>
   );
@@ -88,21 +71,21 @@ export default function HomeScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: "center",
-    flexDirection: "column",
-    alignItems: "center",
+    justifyContent: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   safeArea: {
     flex: 1,
     paddingHorizontal: Spacing.four,
-    alignItems: "center",
+    alignItems: 'center',
     gap: Spacing.three,
     paddingBottom: BottomTabInset + Spacing.three,
     maxWidth: MaxContentWidth,
   },
   heroSection: {
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     flex: 1,
     paddingHorizontal: Spacing.four,
     gap: Spacing.four,
@@ -113,30 +96,30 @@ const styles = StyleSheet.create({
     borderRadius: Spacing.three,
     borderWidth: 1,
     borderColor: Colors.light.primary,
-    alignItems: "center",
-    justifyContent: "center",
+    alignItems: 'center',
+    justifyContent: 'center',
     marginBottom: Spacing.two,
   },
   getStartedButtonPressed: {
     backgroundColor: Colors.light.primary,
   },
   getStartedText: {
-    textTransform: "none",
+    textTransform: 'none',
     color: Colors.light.primary,
     fontFamily: undefined,
   },
   getStartedTextPressed: {
-    color: "#ffffff",
+    color: '#ffffff',
   },
   title: {
-    textAlign: "center",
+    textAlign: 'center',
   },
   code: {
-    textTransform: "uppercase",
+    textTransform: 'uppercase',
   },
   stepContainer: {
     gap: Spacing.three,
-    alignSelf: "stretch",
+    alignSelf: 'stretch',
     paddingHorizontal: Spacing.three,
     paddingVertical: Spacing.four,
     borderRadius: Spacing.four,

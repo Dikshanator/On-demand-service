@@ -1,0 +1,237 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum VerificationStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+enum JobStatus {
+  PENDING
+  ASSIGNED
+  ACCEPTED
+  IN_PROGRESS
+  COMPLETED
+  CANCELED
+}
+
+enum NotificationType {
+  JOB_POSTED
+  JOB_ACCEPTED
+  JOB_IN_PROGRESS
+  JOB_COMPLETED
+  JOB_CANCELED
+  PAYMENT_RECEIVED
+  REVIEW_RECEIVED
+}
+
+model User {
+  userId       Int     @id @default(autoincrement()) @map("user_id")
+  uuid         String  @unique @default(uuid()) @db.Uuid
+  name         String  @db.VarChar(200)
+  email        String  @unique @db.VarChar(255)
+  password     String  @db.VarChar(255)
+  phone        String  @db.VarChar(20)
+  address      String? @db.Text
+  profileImage String  @map("profile_image") @db.Text
+  isAdmin      Boolean @default(false) @map("is_admin")
+
+  // For Email/OTP verification
+  verificationCode      String?
+  verificationExpiresAt DateTime?
+  emailVerified         Boolean   @default(false)
+
+  client           Client?
+  serviceProviders ServiceProvider[]
+
+  paymentsSent     PaymentHistory[] @relation("PaymentSender")
+  paymentsReceived PaymentHistory[] @relation("PaymentReceiver")
+
+  reviewsGiven    Review[]       @relation("Reviewer")
+  reviewsReceived Review[]       @relation("Reviewee")
+  notifications   Notification[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("users")
+}
+
+model Client {
+  userId Int  @id
+  user   User @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  paymentHistories PaymentHistory[]
+  jobRequests      JobRequest[]
+
+  @@map("clients")
+}
+
+model ServiceProvider {
+  providerId Int    @id @default(autoincrement()) @map("provider_id")
+  uuid       String @unique @default(uuid()) @db.Uuid
+
+  userId Int  @map("user_id")
+  user   User @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  documentType        String  @map("document_type") @db.Text
+  documentNo          String  @map("document_no") @db.Text
+  documentFront       String  @map("document_front") @db.Text
+  documentBack        String  @map("document_back") @db.Text
+  photoWithDocument   String  @map("photo_with_document") @db.Text
+  trainingCertificate String  @map("training_certificate") @db.Text
+  introductionVideo   String? @map("introduction_video") @db.Text
+
+  // For Technician identity verification
+  providerVerificationStatus VerificationStatus @default(PENDING) @map("provider_verification_status")
+
+  categoryId      Int             @map("category_id")
+  serviceCategory ServiceCategory @relation(fields: [categoryId], references: [categoryId])
+  jobRequests     JobRequest[]
+
+  @@unique([userId, categoryId])
+  @@map("service_providers")
+}
+
+model ServiceCategory {
+  categoryId          Int     @id @default(autoincrement()) @map("category_id")
+  categoryName        String  @unique @map("category_name") @db.VarChar(200)
+  categoryDescription String? @map("category_description") @db.Text
+
+  serviceProviders ServiceProvider[]
+  jobRequests      JobRequest[]
+
+  @@map("service_category")
+}
+
+model JobRequest {
+  jobId          Int       @id @default(autoincrement()) @map("job_id")
+  uuid           String    @unique @default(uuid()) @db.Uuid
+  jobTitle       String    @map("job_title") @db.VarChar(255)
+  jobDescription String    @map("job_description") @db.Text
+  jobImage       String?   @map("job_image") @db.Text
+  location       String    @db.Text
+  cost           Decimal?  @db.Decimal(10, 2)
+  scheduledDate  DateTime  @map("scheduled_date")
+  jobStatus      JobStatus @default(PENDING) @map("job_status")
+
+  clientId Int    @map("client_id")
+  client   Client @relation(fields: [clientId], references: [userId])
+
+  providerId      Int?             @map("provider_id")
+  serviceProvider ServiceProvider? @relation(fields: [providerId], references: [providerId])
+
+  categoryId      Int             @map("category_id")
+  serviceCategory ServiceCategory @relation(fields: [categoryId], references: [categoryId])
+
+  paymentHistory PaymentHistory[]
+  reviews        Review[]
+  notifications  Notification[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("job_requests")
+}
+
+model PaymentHistory {
+  paymentId     Int           @id @default(autoincrement()) @map("payment_id")
+  uuid          String        @unique @default(uuid()) @db.Uuid
+  paymentAmount Decimal       @map("payment_amount") @db.Decimal(10, 2)
+  paymentDate   DateTime      @default(now()) @map("payment_date")
+  paymentStatus PaymentStatus @default(PENDING) @map("payment_status")
+
+  paymentMethodId Int           @map("payment_method_id")
+  paymentMethod   PaymentMethod @relation(fields: [paymentMethodId], references: [methodId])
+
+  transactionId String? @unique
+
+  senderId Int  @map("sender_id")
+  sender   User @relation("PaymentSender", fields: [senderId], references: [userId])
+
+  receiverId Int  @map("receiver_id")
+  receiver   User @relation("PaymentReceiver", fields: [receiverId], references: [userId])
+
+  jobId      Int        @map("job_id")
+  jobRequest JobRequest @relation(fields: [jobId], references: [jobId])
+
+  clientId Int    @map("client_id")
+  client   Client @relation(fields: [clientId], references: [userId])
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("payment_histories")
+}
+
+model Review {
+  reviewId Int @id @default(autoincrement()) @map("review_id")
+
+  reviewerId Int  @map("reviewer_id")
+  reviewer   User @relation("Reviewer", fields: [reviewerId], references: [userId])
+
+  revieweeId Int  @map("reviewee_id")
+  reviewee   User @relation("Reviewee", fields: [revieweeId], references: [userId])
+
+  jobId      Int        @map("job_id")
+  jobRequest JobRequest @relation(fields: [jobId], references: [jobId])
+
+  rating     Int
+  reviewText String? @map("review_text") @db.Text
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@unique([reviewerId, jobId])
+  @@map("reviews")
+}
+
+model Notification {
+  notificationId Int              @id @default(autoincrement()) @map("notification_id")
+  type           NotificationType
+  title          String           @db.VarChar(255)
+  body           String           @db.Text
+  isRead         Boolean          @default(false) @map("is_read")
+
+  userId Int  @map("user_id")
+  user   User @relation(fields: [userId], references: [userId], onDelete: Cascade)
+
+  createdAt       DateTime    @default(now()) @map("created_at")
+  jobRequest      JobRequest? @relation(fields: [jobRequestJobId], references: [jobId])
+  jobRequestJobId Int?
+
+  @@map("notifications")
+}
+
+model PaymentMethod {
+  methodId    Int     @id @default(autoincrement()) @map("method_id")
+  name        String  @unique @db.VarChar(100)
+  code        String  @unique @db.VarChar(50)
+  description String? @db.Text
+  isActive    Boolean @default(true) @map("is_active")
+
+  paymentHistories PaymentHistory[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("payment_methods")
+}
