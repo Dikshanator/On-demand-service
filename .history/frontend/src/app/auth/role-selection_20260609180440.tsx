@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   Appearance,
   View,
@@ -8,25 +8,23 @@ import {
   Pressable,
   Image,
   Switch,
-} from "react-native";
-import { useRouter } from "expo-router";
-import { useTheme } from "@/hooks/use-theme";
-import { Colors, Spacing } from "@/constants/theme";
-import { Button } from "@/components/ui/button";
-import { useAuth } from "@/context/AuthContext";
-import { useColorScheme } from "@/hooks/use-color-scheme";
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import { useTheme } from '@/hooks/use-theme';
+import { Colors, Spacing } from '@/constants/theme';
+import { Button } from '@/components/ui/button';
+import { useAuth } from '@/context/AuthContext';
+import { useColorScheme } from '@/hooks/use-color-scheme';
 
 export default function RoleSelectionScreen() {
   const theme = useTheme();
   const router = useRouter();
   const { setUserRole, setAuthStep } = useAuth();
-  const [selectedRole, setSelectedRole] = useState<
-    "client" | "provider" | null
-  >(null);
+  const [selectedRole, setSelectedRole] = useState<'client' | 'provider' | null>(null);
   const colorScheme = useColorScheme();
-  const isDark = colorScheme === "dark";
+  const isDark = colorScheme === 'dark';
   const toggleTheme = () => {
-    Appearance.setColorScheme(isDark ? "light" : "dark");
+    Appearance.setColorScheme(isDark ? 'light' : 'dark');
   };
 
   const styles = StyleSheet.create({
@@ -37,28 +35,28 @@ export default function RoleSelectionScreen() {
     header: {
       paddingTop: Spacing.five,
       paddingHorizontal: Spacing.three,
-      alignItems: "center",
+      alignItems: 'center',
     },
     headerTopRow: {
-      flexDirection: "row",
-      justifyContent: "flex-end",
+      flexDirection: 'row',
+      justifyContent: 'flex-end',
       marginBottom: Spacing.four,
     },
     themeToggleContainer: {
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
       marginBottom: Spacing.three,
     },
     logoContainer: {
       width: 120,
       height: 120,
       borderRadius: 60,
-      backgroundColor: "#FFFFFF",
-      alignItems: "center",
-      justifyContent: "center",
+      backgroundColor: '#FFFFFF',
+      alignItems: 'center',
+      justifyContent: 'center',
       marginBottom: Spacing.four,
-      shadowColor: "#000",
+      shadowColor: '#000',
       shadowOffset: { width: 0, height: 2 },
       shadowOpacity: 0.1,
       shadowRadius: 3.84,
@@ -67,19 +65,19 @@ export default function RoleSelectionScreen() {
     logo: {
       width: 80,
       height: 80,
-      resizeMode: "contain",
+      resizeMode: 'contain',
     },
     welcomeText: {
       fontSize: 32,
-      fontWeight: "700",
-      color: isDark ? "#FFFFFF" : theme.text,
+      fontWeight: '700',
+      color: isDark ? '#FFFFFF' : theme.text,
       marginBottom: Spacing.two,
-      textAlign: "center",
+      textAlign: 'center',
     },
     subtitleText: {
       fontSize: 16,
-      color: isDark ? "#B0B4BA" : theme.textSecondary,
-      textAlign: "center",
+      color: isDark ? '#B0B4BA' : theme.textSecondary,
+      textAlign: 'center',
       marginBottom: Spacing.five,
       lineHeight: 24,
     },
@@ -90,15 +88,15 @@ export default function RoleSelectionScreen() {
     },
     choosePathText: {
       fontSize: 20,
-      fontWeight: "700",
+      fontWeight: '700',
       color: theme.text,
       marginBottom: Spacing.two,
-      textAlign: "center",
+      textAlign: 'center',
     },
     questionText: {
       fontSize: 16,
       color: theme.textSecondary,
-      textAlign: "center",
+      textAlign: 'center',
       marginBottom: Spacing.four,
     },
     roleCard: {
@@ -106,7 +104,7 @@ export default function RoleSelectionScreen() {
       borderRadius: 16,
       marginBottom: Spacing.three,
       borderWidth: 2,
-      borderColor: "transparent",
+      borderColor: 'transparent',
     },
     roleCardActive: {
       borderColor: theme.primary,
@@ -117,16 +115,16 @@ export default function RoleSelectionScreen() {
       backgroundColor: theme.backgroundElement,
     },
     roleCardContent: {
-      flexDirection: "row",
-      alignItems: "center",
+      flexDirection: 'row',
+      alignItems: 'center',
     },
     roleIcon: {
       width: 48,
       height: 48,
       borderRadius: 24,
       backgroundColor: theme.primary,
-      alignItems: "center",
-      justifyContent: "center",
+      alignItems: 'center',
+      justifyContent: 'center',
       marginRight: Spacing.three,
     },
     roleText: {
@@ -134,7 +132,7 @@ export default function RoleSelectionScreen() {
     },
     roleTitle: {
       fontSize: 18,
-      fontWeight: "600",
+      fontWeight: '600',
       color: theme.text,
       marginBottom: Spacing.one,
     },
@@ -150,17 +148,17 @@ export default function RoleSelectionScreen() {
     disclaimerText: {
       fontSize: 12,
       color: theme.textSecondary,
-      textAlign: "center",
+      textAlign: 'center',
       marginTop: Spacing.three,
     },
     wave: {
       height: 60,
-      backgroundColor: "transparent",
+      backgroundColor: 'transparent',
       marginVertical: Spacing.three,
     },
     themeToggleButton: {
-      flexDirection: "row",
-      alignItems: "center",
+      flexDirection: 'row',
+      alignItems: 'center',
       gap: Spacing.one,
       paddingHorizontal: Spacing.three,
       paddingVertical: Spacing.two,
@@ -171,7 +169,7 @@ export default function RoleSelectionScreen() {
     },
     themeToggleText: {
       fontSize: 13,
-      fontWeight: "600",
+      fontWeight: '600',
       color: theme.text,
     },
   });
@@ -184,18 +182,11 @@ export default function RoleSelectionScreen() {
             onPress={toggleTheme}
             hitSlop={12}
             accessibilityRole="button"
-            accessibilityLabel={`Switch to ${isDark ? "light" : "dark"} mode`}
-            style={({ pressed }) => [
-              styles.themeToggleButton,
-              pressed && { opacity: 0.75 },
-            ]}
+            accessibilityLabel={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+            style={({ pressed }) => [styles.themeToggleButton, pressed && { opacity: 0.75 }]}
           >
-            <Text style={{ color: theme.text, fontSize: 14 }}>
-              {isDark ? "🌙" : "☀️"}
-            </Text>
-            <Text style={styles.themeToggleText}>
-              {isDark ? "Dark" : "Light"}
-            </Text>
+            <Text style={{ color: theme.text, fontSize: 14 }}>{isDark ? '🌙' : '☀️'}</Text>
+            <Text style={styles.themeToggleText}>{isDark ? 'Dark' : 'Light'}</Text>
           </Pressable>
         </View>
         <View style={styles.logoContainer}>
@@ -216,12 +207,10 @@ export default function RoleSelectionScreen() {
         </Text>
 
         <Pressable
-          onPress={() => setSelectedRole("client")}
+          onPress={() => setSelectedRole('client')}
           style={[
             styles.roleCard,
-            selectedRole === "client"
-              ? styles.roleCardActive
-              : styles.roleCardInactive,
+            selectedRole === 'client' ? styles.roleCardActive : styles.roleCardInactive,
           ]}
         >
           <View style={styles.roleCardContent}>
@@ -231,20 +220,17 @@ export default function RoleSelectionScreen() {
             <View style={styles.roleText}>
               <Text style={styles.roleTitle}>I need a Service</Text>
               <Text style={styles.roleDescription}>
-                Access top-rated professionals for your home, office, or event
-                maintenance.
+                Access top-rated professionals for your home, office, or event maintenance.
               </Text>
             </View>
           </View>
         </Pressable>
 
         <Pressable
-          onPress={() => setSelectedRole("provider")}
+          onPress={() => setSelectedRole('provider')}
           style={[
             styles.roleCard,
-            selectedRole === "provider"
-              ? styles.roleCardActive
-              : styles.roleCardInactive,
+            selectedRole === 'provider' ? styles.roleCardActive : styles.roleCardInactive,
           ]}
         >
           <View style={styles.roleCardContent}>
@@ -254,8 +240,7 @@ export default function RoleSelectionScreen() {
             <View style={styles.roleText}>
               <Text style={styles.roleTitle}>I am a Professional</Text>
               <Text style={styles.roleDescription}>
-                Join Nepal&apos;s largest service network and grow your business
-                effectively.
+                Join Nepal&apos;s largest service network and grow your business effectively.
               </Text>
             </View>
           </View>
@@ -268,8 +253,8 @@ export default function RoleSelectionScreen() {
           onPress={() => {
             if (selectedRole) {
               setUserRole(selectedRole);
-              setAuthStep("login");
-              router.push("/auth/login");
+              setAuthStep('login');
+              router.push('/auth/login');
             }
           }}
           disabled={!selectedRole}
