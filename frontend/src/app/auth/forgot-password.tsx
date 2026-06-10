@@ -10,6 +10,7 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTheme } from '@/hooks/use-theme';
+import { Icon } from '@/components/ui/icon';
 
 export default function ForgotPasswordScreen() {
   const router = useRouter();
@@ -65,9 +66,8 @@ export default function ForgotPasswordScreen() {
                 backgroundColor: isDark ? '#3E3E5C' : '#E8F5F2',
               }}
             >
-              {/* TODO: Replace with actual SVG icon - Envelope with lock circle
-                 Asset: Icon should be 80x80, cyan/teal color (#06B6D4 for dark, #00A088 for light) */}
-              <Text className="text-5xl">✉️</Text>
+              {/* Email/Security icon - TODO: Replace with email+lock icon asset (80x80, cyan/teal color) */}
+              <Icon name="EMAIL" size="XXLARGE" />
             </View>
 
             <Text
@@ -104,7 +104,8 @@ export default function ForgotPasswordScreen() {
                     borderColor: theme.border,
                   }}
                 >
-                  <Text className="text-lg mr-3">✉️</Text>
+                  {/* Email icon - TODO: Replace with email icon asset */}
+                  <Icon name="EMAIL" size="MEDIUM" className="mr-3" />
                   <TextInput
                     placeholder="example@email.com"
                     value={email}
@@ -154,7 +155,8 @@ export default function ForgotPasswordScreen() {
                 className="w-16 h-16 rounded-full items-center justify-center"
                 style={{ backgroundColor: theme.accent }}
               >
-                <Text className="text-3xl">✓</Text>
+                {/* Checkmark icon - TODO: Replace with checkmark icon asset */}
+                <Icon name="SUCCESS" size="XLARGE" />
               </View>
               <Text
                 className="text-lg font-semibold text-center"

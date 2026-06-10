@@ -13,6 +13,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { ProgressIndicator } from '@/components/ui/progress-indicator';
 import { useAuth } from '@/context/AuthContext';
+import { Icon } from '@/components/ui/icon';
 
 const DOCUMENT_TYPES = [
   { id: 'citizenship', label: 'Citizenship' },
@@ -195,7 +196,8 @@ export default function ProviderRegistrationStep3() {
         <Text style={styles.sectionSubtitle}>We verify all providers to ensure client safety</Text>
 
         <View style={styles.warningBox}>
-          <Text style={{ fontSize: 20 }}>🔒</Text>
+          {/* Lock icon - TODO: Replace with lock icon asset */}
+          <Icon name="LOCK" size="LARGE" />
           <Text style={styles.warningText}>
             Documents are encrypted and only used for verification, not shared publicly.
           </Text>
@@ -225,11 +227,12 @@ export default function ProviderRegistrationStep3() {
         </View>
 
         <Text style={styles.label}>Document Number</Text>
+        {/* TODO: Replace with numeric/document number icon asset */}
         <Input
           placeholder="Enter document number"
           value={docNumber}
           onChangeText={setDocNumber}
-          icon={<Text style={{ fontSize: 18 }}>🔢</Text>}
+          icon={<Icon name="DOCUMENT" size="MEDIUM" />}
         />
 
         <View>
@@ -238,7 +241,8 @@ export default function ProviderRegistrationStep3() {
             <Text style={styles.requiredTag}>REQUIRED</Text>
           </View>
           <Pressable style={styles.uploadBox} onPress={() => setHasFrontPhoto(!hasFrontPhoto)}>
-            <Text style={styles.uploadIcon}>📷</Text>
+            {/* Camera icon - TODO: Replace with camera icon asset */}
+            <Icon name="CAMERA" size="XLARGE" />
             <Text style={styles.uploadTitle}>Tap to upload front</Text>
             <Text style={styles.uploadSubtitle}>{hasFrontPhoto ? 'Photo added ✓' : 'Upload document front'}</Text>
           </Pressable>
@@ -247,7 +251,8 @@ export default function ProviderRegistrationStep3() {
         <View>
           <Text style={styles.label}>Document Back Photo</Text>
           <Pressable style={styles.uploadBox} onPress={() => setHasBackPhoto(!hasBackPhoto)}>
-            <Text style={styles.uploadIcon}>📷</Text>
+            {/* Camera icon - TODO: Replace with camera icon asset */}
+            <Icon name="CAMERA" size="XLARGE" />
             <Text style={styles.uploadTitle}>Tap to upload back</Text>
             <Text style={styles.uploadSubtitle}>{hasBackPhoto ? 'Photo added ✓' : 'Upload document back'}</Text>
           </Pressable>
@@ -256,7 +261,8 @@ export default function ProviderRegistrationStep3() {
         <View>
           <Text style={styles.label}>Photo Holding Your Document</Text>
           <Pressable style={styles.uploadBox} onPress={() => setHasSelfie(!hasSelfie)}>
-            <Text style={styles.uploadIcon}>👤</Text>
+            {/* User/selfie icon - TODO: Replace with user icon asset */}
+            <Icon name="USER" size="XLARGE" />
             <Text style={styles.uploadTitle}>Selfie with ID</Text>
             <Text style={styles.uploadSubtitle}>Ensure your face and ID details are clearly visible</Text>
           </Pressable>

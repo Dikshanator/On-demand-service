@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTheme } from '@/hooks/use-theme';
+import { Icon } from '@/components/ui/icon';
 
 export default function AccountCreatedScreen() {
   const router = useRouter();
@@ -83,7 +84,8 @@ export default function AccountCreatedScreen() {
             backgroundColor: isDark ? theme.background : '#F3F4F6',
           }}
         >
-          <Text className="text-lg">✉️</Text>
+          {/* Email icon - TODO: Replace with email icon asset */}
+          <Icon name="EMAIL" size="MEDIUM" />
           <Text
             className="text-base font-medium flex-1"
             style={{ color: theme.text }}

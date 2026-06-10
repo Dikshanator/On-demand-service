@@ -4,6 +4,7 @@ import { useRouter } from "expo-router";
 import { useAuth } from "@/context/AuthContext";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { useTheme } from "@/hooks/use-theme";
+import { Icon } from "@/components/ui/icon";
 
 export default function RoleSelectionScreen() {
   const router = useRouter();
@@ -33,13 +34,15 @@ export default function RoleSelectionScreen() {
             backgroundColor: theme.backgroundElement,
           }}
         >
-          <Text className="text-sm">{isDark ? "🌙" : "☀️"}</Text>
+          {/* Theme toggle icons - TODO: Replace with theme icon assets */}
+          <Icon name={isDark ? "MOON" : "SUN"} size="SMALL" />
           <Text className="text-xs font-semibold" style={{ color: theme.text }}>
             {isDark ? "Dark" : "Light"}
           </Text>
         </Pressable>
 
         {/* Logo Container */}
+        {/* TODO: Replace with actual logo image/SVG */}
         <View
           className="w-32 h-32 rounded-full items-center justify-center shadow-lg mb-6"
           style={{
@@ -48,7 +51,7 @@ export default function RoleSelectionScreen() {
             borderColor: theme.border,
           }}
         >
-          <Text className="text-5xl">🏠</Text>
+          <Icon name="HOME" size="XXLARGE" />
         </View>
 
         {/* Brand Text */}
@@ -109,7 +112,8 @@ export default function RoleSelectionScreen() {
               className="w-12 h-12 rounded-full items-center justify-center mr-4"
               style={{ backgroundColor: theme.primary }}
             >
-              <Text className="text-2xl">👤</Text>
+              {/* User icon - TODO: Replace with user icon asset */}
+              <Icon name="USER" size="LARGE" />
             </View>
             <View className="flex-1">
               <Text
@@ -147,7 +151,8 @@ export default function RoleSelectionScreen() {
               className="w-12 h-12 rounded-full items-center justify-center mr-4"
               style={{ backgroundColor: theme.primary }}
             >
-              <Text className="text-2xl">💼</Text>
+              {/* Professional icon - TODO: Replace with briefcase icon asset */}
+              <Icon name="PROFESSIONAL" size="LARGE" />
             </View>
             <View className="flex-1">
               <Text
