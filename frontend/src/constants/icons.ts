@@ -35,6 +35,8 @@ export const Icons = {
   PROCESSING: '⚙️',    // TODO: Replace with gear/processing icon asset
   WARNING: '⚠️',        // TODO: Replace with warning icon asset
   ERROR: '❌',          // TODO: Replace with error/X icon asset
+  APPLICATION: '📋',   // TODO: Replace with clipboard/application icon asset
+  NOTIFICATION: '🔔',  // TODO: Replace with notification bell icon asset
   
   // Theme
   SUN: '☀️',            // TODO: Replace with sun icon asset
