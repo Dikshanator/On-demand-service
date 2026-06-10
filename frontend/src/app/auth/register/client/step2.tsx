@@ -158,8 +158,7 @@ export default function ClientRegistrationStep2() {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      setAuthStep('authenticated');
-      router.push('/dashboard');
+      router.push('/auth/account-created');
     }, 1500);
   };
 

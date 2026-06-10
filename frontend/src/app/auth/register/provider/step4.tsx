@@ -192,8 +192,7 @@ export default function ProviderRegistrationStep4() {
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      setAuthStep('authenticated');
-      router.push('/dashboard');
+      router.push('/auth/application-submitted');
     }, 1500);
   };
 

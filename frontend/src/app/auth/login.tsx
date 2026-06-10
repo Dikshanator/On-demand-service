@@ -31,6 +31,15 @@ export default function LoginScreen() {
     }, 1500);
   };
 
+  const handleForgotPassword = () => {
+    setIsLoading(true);
+
+    setTimeout(() => {
+      setIsLoading(false);
+      router.push("/auth/forgot-password");
+    }, 1500);
+  };
+
   const handleSignup = () => {
     setAuthStep("register");
     if (userRole === "client") {
@@ -151,7 +160,7 @@ export default function LoginScreen() {
           </View>
 
           {/* Forgot Password Link */}
-          <Pressable className="self-end">
+          <Pressable onPress={handleForgotPassword}>
             <Text
               className="text-sm font-semibold"
               style={{ color: theme.primary }}
@@ -202,7 +211,7 @@ export default function LoginScreen() {
             }}
           >
             <Image
-              source={require('../../../assets/images/Img-Google-margin@2x.png')}
+              source={require("../../../assets/images/Img-Google-margin2x.png")}
               className="w-7 h-5"
               resizeMode="contain"
             />
@@ -220,7 +229,7 @@ export default function LoginScreen() {
             }}
           >
             <Image
-              source={require('../../../assets/images/Img-Apple-margin@2x.png')}
+              source={require("../../../assets/images/Img-Apple-margin2x.png")}
               className="w-7 h-5"
               resizeMode="contain"
             />
