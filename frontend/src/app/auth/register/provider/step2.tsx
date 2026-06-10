@@ -12,15 +12,17 @@ import { Spacing } from '@/constants/theme';
 import { Button } from '@/components/ui/button';
 import { ProgressIndicator } from '@/components/ui/progress-indicator';
 import { useAuth } from '@/context/AuthContext';
+import { Icon } from '@/components/ui/icon';
 
+// TODO: Replace icon names with actual image/SVG assets for each service
 const SERVICES = [
-  { id: 'electrician', name: 'Electrician', icon: '⚡' },
-  { id: 'plumber', name: 'Plumber', icon: '🔧' },
-  { id: 'mechanic', name: 'Mechanic', icon: '🧰' },
-  { id: 'cleaner', name: 'Cleaner', icon: '🧹' },
-  { id: 'tutor', name: 'Tutor', icon: '📚' },
-  { id: 'handyman', name: 'Handyman', icon: '🔨' },
-  { id: 'repair', name: 'Repair Tech', icon: '🔌' },
+  { id: 'electrician', name: 'Electrician', iconName: 'ELECTRICIAN' as const },
+  { id: 'plumber', name: 'Plumber', iconName: 'PLUMBER' as const },
+  { id: 'mechanic', name: 'Mechanic', iconName: 'MECHANIC' as const },
+  { id: 'cleaner', name: 'Cleaner', iconName: 'CLEANER' as const },
+  { id: 'tutor', name: 'Tutor', iconName: 'TUTOR' as const },
+  { id: 'handyman', name: 'Handyman', iconName: 'HANDYMAN' as const },
+  { id: 'repair', name: 'Repair Tech', iconName: 'REPAIR_TECH' as const },
 ];
 
 export default function ProviderRegistrationStep2() {
@@ -220,7 +222,8 @@ export default function ProviderRegistrationStep2() {
               {selectedService === service.id && (
                 <Text style={styles.serviceCheckmark}>✓</Text>
               )}
-              <Text style={styles.serviceIcon}>{service.icon}</Text>
+              {/* Service category icon - TODO: Replace with service-specific icon assets */}
+              <Icon name={service.iconName} size="LARGE" />
               <Text style={styles.serviceName}>{service.name}</Text>
             </Pressable>
           ))}

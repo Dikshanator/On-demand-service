@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 import { useRouter } from 'expo-router';
 import { useTheme } from '@/hooks/use-theme';
+import { Icon } from '@/components/ui/icon';
 
 export default function ApplicationSubmittedScreen() {
   const router = useRouter();
@@ -17,27 +18,28 @@ export default function ApplicationSubmittedScreen() {
 
   const isDark = theme.background === '#1A1A2E';
 
+  // TODO: Replace icon names with actual icon assets for each step
   const steps = [
     {
       id: 1,
       title: 'Application Submitted',
       subtitle: 'Completed on Oct 24, 2023',
       status: 'completed',
-      icon: '✓',
+      iconName: 'SUCCESS' as const,
     },
     {
       id: 2,
       title: 'Document Verification',
       subtitle: 'In progress',
       status: 'progress',
-      icon: '📋',
+      iconName: 'DOCUMENT' as const,
     },
     {
       id: 3,
       title: 'Account Activation',
       subtitle: 'Pending verification',
       status: 'pending',
-      icon: '🔒',
+      iconName: 'LOCK' as const,
     },
   ];
 
@@ -106,8 +108,8 @@ export default function ApplicationSubmittedScreen() {
               backgroundColor: isDark ? '#5A3D2A' : '#FEF3C7',
             }}
           >
-            {/* TODO: Replace with actual SVG icon - Clipboard with clock, orange color */}
-            <Text className="text-5xl">📋</Text>
+            {/* Clipboard/Application icon - TODO: Replace with clipboard+clock icon asset (orange color) */}
+            <Icon name="APPLICATION" size="XXXLARGE" />
           </View>
 
           <Text
@@ -144,18 +146,12 @@ export default function ApplicationSubmittedScreen() {
                     backgroundColor: getStepBackground(step.status),
                   }}
                 >
-                  {step.status === 'completed' ? (
-                    <Text className="text-xl font-bold" style={{ color: getStepColor(step.status) }}>
-                      ✓
-                    </Text>
-                  ) : (
-                    <Text
-                      className="text-xl"
-                      style={{ color: getStepColor(step.status) }}
-                    >
-                      {step.icon}
-                    </Text>
-                  )}
+                  {/* Step status icon - TODO: Replace with status-specific icon assets */}
+                  <Icon 
+                    name={step.iconName} 
+                    size="LARGE"
+                    style={{ color: getStepColor(step.status) }}
+                  />
                 </View>
 
                 {/* Vertical Line */}
@@ -198,10 +194,12 @@ export default function ApplicationSubmittedScreen() {
         <Pressable
           onPress={() => router.push('/dashboard')}
           style={{ backgroundColor: theme.primary }}
-          className="rounded-2xl py-4 items-center justify-center mt-8 mb-6"
+          className="rounded-2xl py-4 items-center justify-center mt-8 mb-6 flex-row gap-2"
         >
-          <Text className="text-white font-semibold text-base gap-2">
-            🏠 Back to Home
+          {/* Home icon - TODO: Replace with home icon asset */}
+          <Icon name="HOME" size="MEDIUM" style={{ color: 'white' }} />
+          <Text className="text-white font-semibold text-base">
+            Back to Home
           </Text>
         </Pressable>
 
@@ -212,7 +210,8 @@ export default function ApplicationSubmittedScreen() {
             backgroundColor: isDark ? theme.background : '#F3F4F6',
           }}
         >
-          <Text className="text-lg mt-1">🔔</Text>
+          {/* Notification bell icon - TODO: Replace with bell icon asset */}
+          <Icon name="NOTIFICATION" size="MEDIUM" className="mt-1" />
           <Text
             className="flex-1 text-sm leading-5"
             style={{ color: theme.textSecondary }}

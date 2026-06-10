@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { TextInput, View, StyleSheet, Pressable, Text } from 'react-native';
 import { useTheme } from '@/hooks/use-theme';
 import { Spacing } from '@/constants/theme';
+import { Icon } from '@/components/ui/icon';
 
 interface InputProps {
   placeholder: string;
@@ -71,9 +72,12 @@ export const Input: React.FC<InputProps> = ({
           style={styles.eyeIcon}
           onPress={() => setIsSecure(!isSecure)}
         >
-          <Text style={{ color: theme.textSecondary, fontSize: 20 }}>
-            {isSecure ? '👁️' : '👁️‍🗨️'}
-          </Text>
+          {/* Eye visibility icon - TODO: Replace with eye icon asset */}
+          <Icon 
+            name={isSecure ? 'EYE_HIDDEN' : 'EYE'} 
+            size="MEDIUM"
+            style={{ color: theme.textSecondary }}
+          />
         </Pressable>
       )}
     </View>

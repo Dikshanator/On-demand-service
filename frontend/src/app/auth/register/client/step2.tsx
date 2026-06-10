@@ -12,6 +12,7 @@ import { Spacing } from '@/constants/theme';
 import { Button } from '@/components/ui/button';
 import { ProgressIndicator } from '@/components/ui/progress-indicator';
 import { useAuth } from '@/context/AuthContext';
+import { Icon } from '@/components/ui/icon';
 
 export default function ClientRegistrationStep2() {
   const theme = useTheme();
@@ -184,7 +185,8 @@ export default function ClientRegistrationStep2() {
 
         <Pressable style={styles.photoUploadContainer}>
           <View style={styles.photoUploadContent}>
-            <Text style={styles.photoIcon}>📷</Text>
+            {/* Camera icon - TODO: Replace with camera icon asset */}
+            <Icon name="CAMERA" size="XLARGE" />
             <Text style={styles.photoTitle}>Add Photo</Text>
             <Text style={styles.photoSubtitle}>Tap to upload a profile photo</Text>
           </View>
