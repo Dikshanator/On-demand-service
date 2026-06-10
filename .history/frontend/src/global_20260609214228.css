@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display:
+    Spline Sans, Inter, ui-sans-serif, system-ui, sans-serif, Apple Color Emoji,
+    Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono,
+    Courier New, monospace;
+  --font-rounded:
+    "SF Pro Rounded", "Hiragino Maru Gothic ProN", Meiryo, "MS PGothic",
+    sans-serif;
+  --font-serif: Georgia, "Times New Roman", serif;
+}
+
+@layer components {
+  /* Button Variants */
+  .btn-primary {
+    @apply bg-blue-900 rounded-2xl py-3 px-6 font-semibold text-white items-center justify-center;
+  }
+
+  .btn-secondary {
+    @apply border border-gray-300 rounded-2xl py-3 px-6 font-semibold text-gray-900 items-center justify-center;
+  }
+
+  /* Input Variants */
+  .input-field {
+    @apply bg-gray-100 rounded-2xl px-4 py-3 text-base text-gray-900;
+  }
+
+  /* Card Variants */
+  .card {
+    @apply bg-white rounded-lg border border-gray-300 shadow-sm;
+  }
+
+  /* Text Variants */
+  .text-heading-1 {
+    @apply text-3xl font-bold text-gray-900;
+  }
+
+  .text-heading-2 {
+    @apply text-2xl font-bold text-gray-900;
+  }
+
+  .text-body {
+    @apply text-base text-gray-600;
+  }
+
+  .text-caption {
+    @apply text-sm text-gray-500;
+  }
+
+  /* Form Group */
+  .form-group {
+    @apply gap-3;
+  }
+
+  .form-label {
+    @apply text-sm font-semibold text-gray-900;
+  }
+}
