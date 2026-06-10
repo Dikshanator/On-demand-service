@@ -1,25 +1,28 @@
+import app from "./app";
 
-import express from "express";
-import cors from "cors";
-import helmet from "helmet";
-import dotenv from "dotenv";
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
 
-dotenv.config();
+async function startServer() {
+  try {
+    // Start server
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+    });
+  } catch (error) {
+    console.error('Failed to start server:', error);
+    process.exit(1);
+  }
+}
 
-const app = express();
-
-app.use(helmet());
-app.use(cors());
-app.use(express.json());
-
-app.get("/health", (_req, res) => {
-	res.json({ status: "ok", uptime: process.uptime() });
+// Handle graceful shutdown
+process.on('SIGTERM', async () => {
+  console.log('SIGTERM signal received: closing HTTP server');
+  process.exit(0);
 });
 
-const port = process.env.PORT ? parseInt(process.env.PORT, 10) : 5000;
-
-app.listen(port, () => {
-    console.log(`Server listening on http://localhost:${port}`);
+process.on('SIGINT', async () => {
+  console.log('SIGINT signal received: closing HTTP server');
+  process.exit(0);
 });
 
-export default app;
+startServer();
