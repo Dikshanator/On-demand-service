@@ -3,7 +3,7 @@ import { useColorScheme } from "react-native";
 import { Stack } from "expo-router";
 // Suppress TS error for side-effect CSS import when no declaration file is present
 // @ts-ignore
-import "../global.css";
+import ".";
 
 import { AnimatedSplashOverlay } from "@/components/animated-icon";
 import { AuthProvider } from "@/context/AuthContext";

@@ -84,10 +84,7 @@ export default function LoginScreen() {
           </Text>
 
           {/* Subtitle */}
-          <Text
-            className="text-sm text-center"
-            style={{ color: theme.textSecondary }}
-          >
+          <Text className="text-sm text-center" style={{ color: theme.textSecondary }}>
             Sign in to continue
           </Text>
         </View>
@@ -96,10 +93,7 @@ export default function LoginScreen() {
         <View className="px-5 gap-6">
           {/* Email Input */}
           <View className="gap-3">
-            <Text
-              className="text-sm font-semibold"
-              style={{ color: theme.text }}
-            >
+            <Text className="text-sm font-semibold" style={{ color: theme.text }}>
               Email or phone number
             </Text>
             <View
@@ -121,10 +115,7 @@ export default function LoginScreen() {
 
           {/* Password Input */}
           <View className="gap-3">
-            <Text
-              className="text-sm font-semibold"
-              style={{ color: theme.text }}
-            >
+            <Text className="text-sm font-semibold" style={{ color: theme.text }}>
               Password
             </Text>
             <View
@@ -152,10 +143,7 @@ export default function LoginScreen() {
 
           {/* Forgot Password Link */}
           <Pressable className="self-end">
-            <Text
-              className="text-sm font-semibold"
-              style={{ color: theme.primary }}
-            >
+            <Text className="text-sm font-semibold" style={{ color: theme.primary }}>
               Forgot Password?
             </Text>
           </Pressable>
@@ -175,20 +163,11 @@ export default function LoginScreen() {
 
         {/* Divider */}
         <View className="flex-row items-center px-5 my-8 gap-4">
-          <View
-            className="flex-1 h-px"
-            style={{ backgroundColor: theme.border }}
-          />
-          <Text
-            className="text-sm font-semibold"
-            style={{ color: theme.textSecondary }}
-          >
+          <View className="flex-1 h-px" style={{ backgroundColor: theme.border }} />
+          <Text className="text-sm font-semibold" style={{ color: theme.textSecondary }}>
             or
           </Text>
-          <View
-            className="flex-1 h-px"
-            style={{ backgroundColor: theme.border }}
-          />
+          <View className="flex-1 h-px" style={{ backgroundColor: theme.border }} />
         </View>
 
         {/* Social Login Buttons */}
@@ -202,7 +181,7 @@ export default function LoginScreen() {
             }}
           >
             <Image
-              source={require('../../../assets/images/Img-Google-margin@2x.png')}
+              source={require("../../../assets/images/Img-Google-margin2x.png")}
               className="w-7 h-5"
               resizeMode="contain"
             />
@@ -220,7 +199,7 @@ export default function LoginScreen() {
             }}
           >
             <Image
-              source={require('../../../assets/images/Img-Apple-margin@2x.png')}
+              source={require("../../../assets/images/Img-Apple-margin2x.png")}
               className="w-7 h-5"
               resizeMode="contain"
             />
@@ -237,10 +216,7 @@ export default function LoginScreen() {
               Don&apos;t have an account?
             </Text>
             <Pressable onPress={handleSignup}>
-              <Text
-                className="text-sm font-semibold"
-                style={{ color: theme.primary }}
-              >
+              <Text className="text-sm font-semibold" style={{ color: theme.primary }}>
                 Create Account
               </Text>
             </Pressable>

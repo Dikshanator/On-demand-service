@@ -1,5 +1,11 @@
 import React, { useState } from "react";
-import { Appearance, View, Text, ScrollView, Pressable } from "react-native";
+import {
+  Appearance,
+  View,
+  Text,
+  ScrollView,
+  Pressable,
+} from "react-native";
 import { useRouter } from "expo-router";
 import { useAuth } from "@/context/AuthContext";
 import { useColorScheme } from "@/hooks/use-color-scheme";
@@ -181,9 +187,7 @@ export default function RoleSelectionScreen() {
           disabled={!selectedRole}
           className="rounded-2xl py-4 items-center justify-center"
           style={{
-            backgroundColor: selectedRole
-              ? theme.primary
-              : theme.backgroundSelected,
+            backgroundColor: selectedRole ? theme.primary : theme.backgroundSelected,
           }}
         >
           <Text
@@ -193,10 +197,7 @@ export default function RoleSelectionScreen() {
             Continue
           </Text>
         </Pressable>
-        <Text
-          className="text-xs text-center mt-4"
-          style={{ color: theme.textSecondary }}
-        >
+        <Text className="text-xs text-center mt-4" style={{ color: theme.textSecondary }}>
           By continuing, you agree to our Terms of Service
         </Text>
       </View>

@@ -202,7 +202,7 @@ export default function LoginScreen() {
             }}
           >
             <Image
-              source={require('../../../assets/images/Img-Google-margin@2x.png')}
+              source={require("../../../assets/images/Img-Google-margin2x.png")}
               className="w-7 h-5"
               resizeMode="contain"
             />
@@ -220,7 +220,7 @@ export default function LoginScreen() {
             }}
           >
             <Image
-              source={require('../../../assets/images/Img-Apple-margin@2x.png')}
+              source={require("../../../assets/images/Img-Apple-margin2x.png")}
               className="w-7 h-5"
               resizeMode="contain"
             />

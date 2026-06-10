@@ -202,7 +202,7 @@ export default function LoginScreen() {
             }}
           >
             <Image
-              source={require('../../../assets/images/Img-Google-margin@2x.png')}
+              source={require("../../../assets/images/Img-Google-margin2x.png")}
               className="w-7 h-5"
               resizeMode="contain"
             />
@@ -210,6 +210,7 @@ export default function LoginScreen() {
               Google
             </Text>
           </Pressable>
+<<<<<<< HEAD
 
           <Pressable
             className="flex-row items-center justify-center rounded-2xl py-3 gap-2"
@@ -220,7 +221,13 @@ export default function LoginScreen() {
             }}
           >
             <Image
-              source={require('../../../assets/images/Img-Apple-margin@2x.png')}
+              source={require("../../../assets/images/Img-Apple-margin2x.png")}
+=======
+          
+          <Pressable className="flex-row items-center justify-center border border-gray-300 rounded-2xl py-3 gap-2">
+            <Image 
+              source={require('../../assets/images/Img-Apple-margin@2x.png')} 
+>>>>>>> a23c6faa85dfe03526da7a0b6f7505afe083eb50
               className="w-7 h-5"
               resizeMode="contain"
             />
