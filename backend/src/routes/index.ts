@@ -1,9 +1,10 @@
-import Router from 'express';
+import { Router } from 'express';
+import jobRequestRoutes from "./jobRequest";
+import authRoutes from "./auth";
 
 const router = Router();
 
-// router.use("/client");
-// router.use("/providers");
-// router.use("/admin");
+router.use("/jobs", jobRequestRoutes);
+router.use("/auth", authRoutes);
 
 export default router;
