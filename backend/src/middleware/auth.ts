@@ -3,7 +3,7 @@ import { verifyToken } from '../utils/jwt';
 
 export interface AuthRequest extends Request {
     user?: {
-        userID: number,
+        userId: number,
         email: string
     };
 }
