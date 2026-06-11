@@ -12,7 +12,6 @@ import {
 import { useRouter } from "expo-router";
 import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/hooks/use-theme";
-import { Icon } from "@/components/ui/icon";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -28,16 +27,7 @@ export default function LoginScreen() {
     setTimeout(() => {
       setIsLoading(false);
       setAuthStep("authenticated");
-      router.push("/client/(tabs)/home");
-    }, 1500);
-  };
-
-  const handleForgotPassword = () => {
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-      router.push("/auth/forgot-password");
+      router.push("/dashboard");
     }, 1500);
   };
 
@@ -155,17 +145,13 @@ export default function LoginScreen() {
                 onPress={() => setShowPassword(!showPassword)}
                 className="p-2"
               >
-                {/* Eye icon - TODO: Replace with eye/visibility icon asset */}
-                <Icon
-                  name={showPassword ? "EYE" : "EYE_HIDDEN"}
-                  size="MEDIUM"
-                />
+                <Text className="text-lg">{showPassword ? "👁️" : "👁️‍🗨️"}</Text>
               </Pressable>
             </View>
           </View>
 
           {/* Forgot Password Link */}
-          <Pressable onPress={handleForgotPassword}>
+          <Pressable className="self-end">
             <Text
               className="text-sm font-semibold"
               style={{ color: theme.primary }}
