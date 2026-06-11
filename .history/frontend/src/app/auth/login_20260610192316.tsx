@@ -12,7 +12,6 @@ import {
 import { useRouter } from "expo-router";
 import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/hooks/use-theme";
-import { Icon } from "@/components/ui/icon";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -28,16 +27,7 @@ export default function LoginScreen() {
     setTimeout(() => {
       setIsLoading(false);
       setAuthStep("authenticated");
-      router.push("/client/(tabs)/home");
-    }, 1500);
-  };
-
-  const handleForgotPassword = () => {
-    setIsLoading(true);
-
-    setTimeout(() => {
-      setIsLoading(false);
-      router.push("/auth/forgot-password");
+      router.push("/dashboard");
     }, 1500);
   };
 
@@ -66,7 +56,6 @@ export default function LoginScreen() {
         {/* Header Section - App Branding */}
         <View className="items-center pt-6 pb-10">
           {/* Logo Container */}
-          {/* TODO: Replace with actual logo image/SVG */}
           <View
             className="w-32 h-32 rounded-full items-center justify-center shadow-lg mb-4"
             style={{
@@ -75,7 +64,7 @@ export default function LoginScreen() {
               borderColor: theme.border,
             }}
           >
-            <Icon name="HOME" size="XXLARGE" />
+            <Text className="text-5xl">🏠</Text>
           </View>
 
           {/* Logo Text */}
@@ -117,8 +106,7 @@ export default function LoginScreen() {
               className="flex-row items-center rounded-2xl pl-4 pr-4"
               style={{ backgroundColor: theme.backgroundElement }}
             >
-              {/* Email icon - TODO: Replace with email icon asset */}
-              <Icon name="EMAIL" size="MEDIUM" className="mr-3" />
+              <Text className="text-lg mr-3">✉️</Text>
               <TextInput
                 placeholder="Email or phone number"
                 value={email}
@@ -143,8 +131,7 @@ export default function LoginScreen() {
               className="flex-row items-center rounded-2xl pl-4 pr-4"
               style={{ backgroundColor: theme.backgroundElement }}
             >
-              {/* Lock icon - TODO: Replace with lock icon asset */}
-              <Icon name="LOCK" size="MEDIUM" className="mr-3" />
+              <Text className="text-lg mr-3">🔒</Text>
               <TextInput
                 placeholder="Password"
                 value={password}
@@ -158,17 +145,13 @@ export default function LoginScreen() {
                 onPress={() => setShowPassword(!showPassword)}
                 className="p-2"
               >
-                {/* Eye icon - TODO: Replace with eye/visibility icon asset */}
-                <Icon
-                  name={showPassword ? "EYE" : "EYE_HIDDEN"}
-                  size="MEDIUM"
-                />
+                <Text className="text-lg">{showPassword ? "👁️" : "👁️‍🗨️"}</Text>
               </Pressable>
             </View>
           </View>
 
           {/* Forgot Password Link */}
-          <Pressable onPress={handleForgotPassword}>
+          <Pressable className="self-end">
             <Text
               className="text-sm font-semibold"
               style={{ color: theme.primary }}
@@ -219,7 +202,7 @@ export default function LoginScreen() {
             }}
           >
             <Image
-              source={require("../../../assets/images/Img-Google-margin2x.png")}
+              source={require('../../../assets/images/Img-Google-margin2x.png')}
               className="w-7 h-5"
               resizeMode="contain"
             />
@@ -237,7 +220,7 @@ export default function LoginScreen() {
             }}
           >
             <Image
-              source={require("../../../assets/images/Img-Apple-margin2x.png")}
+              source={require('../../../assets/images/Img-Apple-margin@2x.png')}
               className="w-7 h-5"
               resizeMode="contain"
             />

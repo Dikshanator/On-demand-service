@@ -28,7 +28,7 @@ export default function LoginScreen() {
     setTimeout(() => {
       setIsLoading(false);
       setAuthStep("authenticated");
-      router.push("/client/(tabs)/home");
+      router.push("../client/(tabs)/profile");
     }, 1500);
   };
 

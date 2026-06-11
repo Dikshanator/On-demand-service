@@ -28,7 +28,7 @@ export default function LoginScreen() {
     setTimeout(() => {
       setIsLoading(false);
       setAuthStep("authenticated");
-      router.push("/client/(tabs)/home");
+      router.push("");
     }, 1500);
   };
 
@@ -159,10 +159,7 @@ export default function LoginScreen() {
                 className="p-2"
               >
                 {/* Eye icon - TODO: Replace with eye/visibility icon asset */}
-                <Icon
-                  name={showPassword ? "EYE" : "EYE_HIDDEN"}
-                  size="MEDIUM"
-                />
+                <Icon name={showPassword ? "EYE" : "EYE_HIDDEN"} size="MEDIUM" />
               </Pressable>
             </View>
           </View>
