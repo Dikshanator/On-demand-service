@@ -1,0 +1,122 @@
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Tabs } from 'expo-router';
+import { useTheme } from '@/hooks/use-theme';
+import { Spacing } from '@/constants/theme';
+import { Icon } from '@/components/ui/icon';
+
+export default function ProviderTabsLayout() {
+  const theme = useTheme();
+
+  const styles = StyleSheet.create({
+    tabBarContainer: {
+      backgroundColor: theme.backgroundElement,
+      borderTopWidth: 1,
+      borderTopColor: theme.divider,
+    },
+    tabBarLabel: {
+      fontSize: 11,
+      fontWeight: '600',
+      marginTop: Spacing.half,
+    },
+    tabBarInactive: {
+      color: theme.textSecondary,
+    },
+    tabBarActive: {
+      color: theme.primary,
+    },
+  });
+
+  return (
+    <Tabs
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: styles.tabBarContainer,
+        tabBarLabelStyle: styles.tabBarLabel,
+        tabBarActiveTintColor: theme.primary as any,
+        tabBarInactiveTintColor: theme.textSecondary as any,
+        tabBarShowLabel: true,
+      }}
+    >
+      {/* Home Tab */}
+      <Tabs.Screen
+        name="home"
+        options={{
+          title: 'Home',
+          tabBarIcon: ({ color, focused }) => (
+            <Icon
+              name="HOME"
+              size="MEDIUM"
+              style={{ color }}
+            />
+          ),
+          tabBarLabel: 'Home',
+        }}
+      />
+
+      {/* Jobs Tab */}
+      <Tabs.Screen
+        name="jobs"
+        options={{
+          title: 'Jobs',
+          tabBarIcon: ({ color, focused }) => (
+            <Icon
+              name="APPLICATION"
+              size="MEDIUM"
+              style={{ color }}
+            />
+          ),
+          tabBarLabel: 'Jobs',
+        }}
+      />
+
+      {/* Earnings Tab */}
+      <Tabs.Screen
+        name="earnings"
+        options={{
+          title: 'Earnings',
+          tabBarIcon: ({ color, focused }) => (
+            <Icon
+              name="NOTIFICATION"
+              size="MEDIUM"
+              style={{ color }}
+            />
+          ),
+          tabBarLabel: 'Earnings',
+        }}
+      />
+
+      {/* Notifications Tab */}
+      <Tabs.Screen
+        name="notifications"
+        options={{
+          title: 'Notifications',
+          tabBarIcon: ({ color, focused }) => (
+            <Icon
+              name="NOTIFICATION"
+              size="MEDIUM"
+              style={{ color }}
+            />
+          ),
+          tabBarLabel: 'Notifications',
+        }}
+      />
+
+      {/* Profile Tab */}
+      <Tabs.Screen
+        name="profile"
+        options={{
+          title: 'Profile',
+          tabBarIcon: ({ color, focused }) => (
+            <Icon
+              name="USER"
+              size="MEDIUM"
+              style={{ color }}
+            />
+          ),
+          tabBarLabel: 'Profile',
+        }}
+      />
+    </Tabs>
+  );
+}
