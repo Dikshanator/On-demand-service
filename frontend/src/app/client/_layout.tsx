@@ -126,7 +126,54 @@ export default function ClientLayout() {
         name="job-posted"
         options={{
           presentation: 'card',
-          animationEnabled: true,
+        }}
+      />
+
+      {/* Edit Profile */}
+      <Stack.Screen
+        name="edit-profile"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Chat List */}
+      <Stack.Screen
+        name="chat"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Chat Detail */}
+      <Stack.Screen
+        name="chat/[id]"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Incoming Call */}
+      <Stack.Screen
+        name="call/incoming"
+        options={{
+          presentation: 'transparentModal',
+        }}
+      />
+
+      {/* Active Call */}
+      <Stack.Screen
+        name="call/active"
+        options={{
+          presentation: 'transparentModal',
+        }}
+      />
+
+      {/* Call Summary */}
+      <Stack.Screen
+        name="call/summary"
+        options={{
+          presentation: 'card',
         }}
       />
     </Stack>

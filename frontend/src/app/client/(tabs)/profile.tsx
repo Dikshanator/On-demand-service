@@ -41,7 +41,7 @@ export default function ProfileScreen() {
       icon: 'USER',
       label: 'Edit Profile',
       description: 'Update your personal information',
-      action: () => {},
+      action: () => router.push('/client/edit-profile'),
     },
     {
       id: '2',
@@ -228,7 +228,10 @@ export default function ProfileScreen() {
           <Text style={styles.profileEmail}>{user.email}</Text>
           <Text style={styles.profilePhone}>{user.phone}</Text>
           <Text style={styles.profileMeta}>Member since {user.joinedDate}</Text>
-          <Pressable style={styles.editButton}>
+          <Pressable
+            style={styles.editButton}
+            onPress={() => router.push('/client/edit-profile')}
+          >
             <Text style={styles.editButtonText}>Edit Profile</Text>
           </Pressable>
         </View>

@@ -556,10 +556,21 @@ export default function ProviderHomeScreen() {
                   <View style={styles.jobRequestFooter}>
                     <Text style={styles.jobPay}>EST. PAY</Text>
                     <View style={styles.jobButtons}>
-                      <Pressable style={styles.declineButton}>
+                      <Pressable
+                        style={styles.declineButton}
+                        onPress={() => {
+                          // TODO: API call to decline job
+                        }}
+                      >
                         <Text style={styles.declineButtonText}>Decline</Text>
                       </Pressable>
-                      <Pressable style={styles.acceptButton}>
+                      <Pressable
+                        style={styles.acceptButton}
+                        onPress={() => {
+                          // TODO: API call to accept job, then navigate to jobs tab
+                          router.push('/provider/(tabs)/jobs');
+                        }}
+                      >
                         <Text style={styles.acceptButtonText}>Accept Job</Text>
                       </Pressable>
                     </View>
@@ -581,10 +592,21 @@ export default function ProviderHomeScreen() {
                 <View style={styles.jobRequestFooter}>
                   <Text style={styles.jobPay}>EST. PAY</Text>
                   <View style={styles.jobButtons}>
-                    <Pressable style={styles.declineButton}>
+                    <Pressable
+                      style={styles.declineButton}
+                      onPress={() => {
+                        // TODO: API call to decline job
+                      }}
+                    >
                       <Text style={styles.declineButtonText}>Decline</Text>
                     </Pressable>
-                    <Pressable style={styles.acceptButton}>
+                    <Pressable
+                      style={styles.acceptButton}
+                      onPress={() => {
+                        // TODO: API call to accept job, then navigate to jobs tab
+                        router.push('/provider/(tabs)/jobs');
+                      }}
+                    >
                       <Text style={styles.acceptButtonText}>Accept Job</Text>
                     </Pressable>
                   </View>
