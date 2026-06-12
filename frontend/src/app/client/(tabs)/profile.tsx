@@ -41,42 +41,42 @@ export default function ProfileScreen() {
       icon: 'USER',
       label: 'Edit Profile',
       description: 'Update your personal information',
-      action: () => {},
+      action: () => router.push('/client/edit-profile'),
     },
     {
       id: '2',
       icon: 'HOME',
       label: 'Saved Addresses',
       description: 'Manage your saved locations',
-      action: () => {},
+      action: () => router.push('/client/saved-addresses'),
     },
     {
       id: '3',
-      icon: 'NOTIFICATION',
+      icon: 'APPLICATION',
       label: 'Payment Methods',
       description: 'Manage payment options',
-      action: () => {},
+      action: () => router.push('/client/payment-methods'),
     },
     {
       id: '4',
-      icon: 'APPLICATION',
+      icon: 'NOTIFICATION',
       label: 'My Reviews',
       description: 'View your reviews and ratings',
-      action: () => {},
+      action: () => router.push('/client/my-reviews'),
     },
     {
       id: '5',
-      icon: 'NOTIFICATION',
+      icon: 'HOME',
       label: 'Settings',
       description: 'App preferences and notifications',
-      action: () => {},
+      action: () => router.push('/client/settings'),
     },
     {
       id: '6',
       icon: 'NOTIFICATION',
       label: 'Help & Support',
       description: 'Get help or contact support',
-      action: () => {},
+      action: () => router.push('/client/help-support'),
     },
   ];
 
@@ -228,7 +228,10 @@ export default function ProfileScreen() {
           <Text style={styles.profileEmail}>{user.email}</Text>
           <Text style={styles.profilePhone}>{user.phone}</Text>
           <Text style={styles.profileMeta}>Member since {user.joinedDate}</Text>
-          <Pressable style={styles.editButton}>
+          <Pressable
+            style={styles.editButton}
+            onPress={() => router.push('/client/edit-profile')}
+          >
             <Text style={styles.editButtonText}>Edit Profile</Text>
           </Pressable>
         </View>

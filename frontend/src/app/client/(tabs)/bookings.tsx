@@ -169,15 +169,8 @@ export default function BookingsScreen() {
   });
 
   const renderBooking = ({ item }: { item: Booking }) => (
-    <Pressable
+    <View
       style={styles.bookingCard}
-      onPress={() => {
-        if (item.status === 'upcoming') {
-          router.push('/client/live-tracking');
-        } else if (item.status === 'completed') {
-          router.push('/client/job-completed');
-        }
-      }}
     >
       <Image source={{ uri: item.providerImage }} style={styles.bookingImage} />
       <View style={styles.bookingInfo}>
@@ -193,6 +186,66 @@ export default function BookingsScreen() {
           <Text style={styles.bookingStatusText}>{item.status}</Text>
         </View>
       </View>
+      {item.status === 'upcoming' && (
+        <View
+          style={{
+            flexDirection: 'row',
+            gap: Spacing.one,
+            marginTop: Spacing.two,
+          }}
+        >
+          <Pressable
+            style={{
+              flex: 1,
+              paddingVertical: Spacing.one,
+              paddingHorizontal: Spacing.two,
+              backgroundColor: theme.backgroundElement,
+              borderRadius: 8,
+              alignItems: 'center',
+            }}
+            onPress={() => router.push({
+              pathname: '/chat/[id]',
+              params: { id: item.providerName, providerName: item.providerName },
+            })}
+          >
+            <Text style={{ fontSize: 12, fontWeight: '600', color: theme.primary }}>
+              Chat
+            </Text>
+          </Pressable>
+          <Pressable
+            style={{
+              flex: 1,
+              paddingVertical: Spacing.one,
+              paddingHorizontal: Spacing.two,
+              backgroundColor: theme.accent,
+              borderRadius: 8,
+              alignItems: 'center',
+            }}
+            onPress={() => router.push({
+              pathname: '/call/incoming',
+              params: { providerName: item.providerName },
+            })}
+          >
+            <Text style={{ fontSize: 12, fontWeight: '600', color: '#FFFFFF' }}>
+              Call
+            </Text>
+          </Pressable>
+        </View>
+      )}
+    </View>
+  );
+  
+  const renderBookingPressable = ({ item }: { item: Booking }) => (
+    <Pressable
+      onPress={() => {
+        if (item.status === 'upcoming') {
+          router.push('/client/live-tracking');
+        } else if (item.status === 'completed') {
+          router.push('/client/job-completed');
+        }
+      }}
+    >
+      {renderBooking({ item })}
     </Pressable>
   );
 
@@ -227,7 +280,7 @@ export default function BookingsScreen() {
       {filteredBookings.length > 0 ? (
         <FlatList
           data={filteredBookings}
-          renderItem={renderBooking}
+          renderItem={renderBookingPressable}
           keyExtractor={(item) => item.id}
           scrollEnabled={false}
         />

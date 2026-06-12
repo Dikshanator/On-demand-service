@@ -126,7 +126,94 @@ export default function ClientLayout() {
         name="job-posted"
         options={{
           presentation: 'card',
-          animationEnabled: true,
+        }}
+      />
+
+      {/* Edit Profile */}
+      <Stack.Screen
+        name="edit-profile"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Saved Addresses */}
+      <Stack.Screen
+        name="saved-addresses"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Payment Methods */}
+      <Stack.Screen
+        name="payment-methods"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* My Reviews */}
+      <Stack.Screen
+        name="my-reviews"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Settings */}
+      <Stack.Screen
+        name="settings"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Help & Support */}
+      <Stack.Screen
+        name="help-support"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Chat List */}
+      <Stack.Screen
+        name="chat"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Chat Detail */}
+      <Stack.Screen
+        name="chat/[id]"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Incoming Call */}
+      <Stack.Screen
+        name="call/incoming"
+        options={{
+          presentation: 'transparentModal',
+        }}
+      />
+
+      {/* Active Call */}
+      <Stack.Screen
+        name="call/active"
+        options={{
+          presentation: 'transparentModal',
+        }}
+      />
+
+      {/* Call Summary */}
+      <Stack.Screen
+        name="call/summary"
+        options={{
+          presentation: 'card',
         }}
       />
     </Stack>

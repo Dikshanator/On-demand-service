@@ -12,7 +12,6 @@ import {
 import { useRouter } from "expo-router";
 import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/hooks/use-theme";
-import { Icon } from "@/components/ui/icon";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -28,12 +27,7 @@ export default function LoginScreen() {
     setTimeout(() => {
       setIsLoading(false);
       setAuthStep("authenticated");
-      // Redirect based on selected role
-      if (userRole === "provider") {
-        router.push("/provider/(tabs)/home");
-      } else {
-        router.push("/client/(tabs)/home");
-      }
+      router.push("/client/(tabs)/home");
     }, 1500);
   };
 
@@ -160,6 +154,7 @@ export default function LoginScreen() {
                 onPress={() => setShowPassword(!showPassword)}
                 className="p-2"
               >
+                <Text className="text-lg">{showPassword ? "👁️" : "👁️‍🗨️"}</Text>
                 {/* Eye icon - TODO: Replace with eye/visibility icon asset */}
                 <Icon
                   name={showPassword ? "EYE" : "EYE_HIDDEN"}

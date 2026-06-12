@@ -414,6 +414,58 @@ export default function JobCompletedScreen() {
             <Icon name="SUCCESS" size="MEDIUM" style={{ color: theme.accent }} />
           </View>
 
+          {/* Provider Actions */}
+          <View
+            style={{
+              flexDirection: 'row',
+              gap: Spacing.two,
+              marginBottom: Spacing.four,
+            }}
+          >
+            <Pressable
+              style={{
+                flex: 1,
+                paddingVertical: Spacing.two,
+                alignItems: 'center',
+                backgroundColor: theme.backgroundElement,
+                borderRadius: 12,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                gap: Spacing.one,
+              }}
+              onPress={() => router.push({
+                pathname: '/chat/[id]',
+                params: { id: job.provider.name, providerName: job.provider.name },
+              })}
+            >
+              <Icon name="EMAIL" size="MEDIUM" style={{ color: theme.primary }} />
+              <Text style={{ fontSize: 14, fontWeight: '600', color: theme.primary }}>
+                Chat
+              </Text>
+            </Pressable>
+            <Pressable
+              style={{
+                flex: 1,
+                paddingVertical: Spacing.two,
+                alignItems: 'center',
+                backgroundColor: theme.accent,
+                borderRadius: 12,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                gap: Spacing.one,
+              }}
+              onPress={() => router.push({
+                pathname: '/call/incoming',
+                params: { providerName: job.provider.name },
+              })}
+            >
+              <Icon name="NOTIFICATION" size="MEDIUM" style={{ color: '#FFFFFF' }} />
+              <Text style={{ fontSize: 14, fontWeight: '600', color: '#FFFFFF' }}>
+                Call
+              </Text>
+            </Pressable>
+          </View>
+
           {/* Rating Section */}
           <View style={styles.ratingSection}>
             <Text style={styles.ratingLabel}>Rate Your Experience</Text>

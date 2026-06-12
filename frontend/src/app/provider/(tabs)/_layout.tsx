@@ -5,7 +5,7 @@ import { useTheme } from '@/hooks/use-theme';
 import { Spacing } from '@/constants/theme';
 import { Icon } from '@/components/ui/icon';
 
-export default function TabsLayout() {
+export default function ProviderTabsLayout() {
   const theme = useTheme();
 
   const styles = StyleSheet.create({
@@ -33,8 +33,8 @@ export default function TabsLayout() {
         headerShown: false,
         tabBarStyle: styles.tabBarContainer,
         tabBarLabelStyle: styles.tabBarLabel,
-        tabBarActiveTintColor: theme.primary,
-        tabBarInactiveTintColor: theme.textSecondary,
+        tabBarActiveTintColor: theme.primary as any,
+        tabBarInactiveTintColor: theme.textSecondary as any,
         tabBarShowLabel: true,
       }}
     >
@@ -54,11 +54,11 @@ export default function TabsLayout() {
         }}
       />
 
-      {/* Bookings Tab */}
+      {/* Jobs Tab */}
       <Tabs.Screen
-        name="bookings"
+        name="jobs"
         options={{
-          title: 'Bookings',
+          title: 'Jobs',
           tabBarIcon: ({ color, focused }) => (
             <Icon
               name="APPLICATION"
@@ -66,23 +66,23 @@ export default function TabsLayout() {
               style={{ color }}
             />
           ),
-          tabBarLabel: 'Bookings',
+          tabBarLabel: 'Jobs',
         }}
       />
 
-      {/* Payments Tab */}
+      {/* Earnings Tab */}
       <Tabs.Screen
-        name="payments"
+        name="earnings"
         options={{
-          title: 'Payments',
+          title: 'Earnings',
           tabBarIcon: ({ color, focused }) => (
             <Icon
-              name="APPLICATION"
+              name="NOTIFICATION"
               size="MEDIUM"
               style={{ color }}
             />
           ),
-          tabBarLabel: 'Payments',
+          tabBarLabel: 'Earnings',
         }}
       />
 
