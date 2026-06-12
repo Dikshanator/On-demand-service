@@ -503,15 +503,21 @@ export default function ProviderJobsScreen() {
                       <View style={styles.jobButtons}>
                         <Pressable
                           style={styles.chatButton}
-                          onPress={() => router.push(`/provider/chat/1`)}
+                          onPress={() => router.push({
+                            pathname: '/provider/chat/[id]',
+                            params: { id: job.clientName, clientName: job.clientName },
+                          })}
                         >
                           <Text style={styles.chatButtonText}>Chat</Text>
                         </Pressable>
                         <Pressable
                           style={styles.navigateButton}
-                          onPress={() => {}}
+                          onPress={() => router.push({
+                            pathname: '/provider/call/active',
+                            params: { clientName: job.clientName },
+                          })}
                         >
-                          <Text style={styles.navigateButtonText}>Navigate</Text>
+                          <Text style={styles.navigateButtonText}>Call</Text>
                         </Pressable>
                       </View>
                     </View>

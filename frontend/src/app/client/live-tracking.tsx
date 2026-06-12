@@ -343,10 +343,22 @@ export default function LiveTrackingScreen() {
             </View>
           </View>
           <View style={styles.actionButtons}>
-            <Pressable style={styles.actionButton}>
-              <Icon name="NOTIFICATION" size="MEDIUM" style={{ color: '#FFFFFF' }} />
+            <Pressable
+              style={styles.actionButton}
+              onPress={() => router.push({
+                pathname: '/chat/[id]',
+                params: { id: provider.name, providerName: provider.name },
+              })}
+            >
+              <Icon name="EMAIL" size="MEDIUM" style={{ color: '#FFFFFF' }} />
             </Pressable>
-            <Pressable style={styles.actionButton}>
+            <Pressable
+              style={styles.actionButton}
+              onPress={() => router.push({
+                pathname: '/call/active',
+                params: { providerName: provider.name },
+              })}
+            >
               <Icon name="NOTIFICATION" size="MEDIUM" style={{ color: '#FFFFFF' }} />
             </Pressable>
           </View>

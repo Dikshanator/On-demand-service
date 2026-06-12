@@ -415,6 +415,56 @@ export default function ProviderProfileScreen() {
 
       {/* Footer Button */}
       <View style={styles.footer}>
+        <View style={{ flexDirection: 'row', gap: Spacing.two, marginBottom: Spacing.two }}>
+          <Pressable
+            style={{ flex: 1 }}
+            onPress={() => router.push({
+              pathname: '/chat/[id]',
+              params: { id: id, providerName: provider.name },
+            })}
+          >
+            <View
+              style={{
+                paddingVertical: Spacing.two,
+                alignItems: 'center',
+                backgroundColor: theme.backgroundElement,
+                borderRadius: 12,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                gap: Spacing.one,
+              }}
+            >
+              <Icon name="EMAIL" size="MEDIUM" style={{ color: theme.primary }} />
+              <Text style={{ fontSize: 14, fontWeight: '600', color: theme.primary }}>
+                Chat
+              </Text>
+            </View>
+          </Pressable>
+          <Pressable
+            style={{ flex: 1 }}
+            onPress={() => router.push({
+              pathname: '/call/incoming',
+              params: { providerName: provider.name, providerId: id },
+            })}
+          >
+            <View
+              style={{
+                paddingVertical: Spacing.two,
+                alignItems: 'center',
+                backgroundColor: theme.accent,
+                borderRadius: 12,
+                flexDirection: 'row',
+                justifyContent: 'center',
+                gap: Spacing.one,
+              }}
+            >
+              <Icon name="NOTIFICATION" size="MEDIUM" style={{ color: '#FFFFFF' }} />
+              <Text style={{ fontSize: 14, fontWeight: '600', color: '#FFFFFF' }}>
+                Call
+              </Text>
+            </View>
+          </Pressable>
+        </View>
         <Button
           title="Book Now"
           onPress={() => router.push(`/client/checkout?provider=${id}`)}
