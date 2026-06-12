@@ -70,19 +70,19 @@ export default function TabsLayout() {
         }}
       />
 
-      {/* Wallet Tab */}
+      {/* Payments Tab */}
       <Tabs.Screen
-        name="wallet"
+        name="payments"
         options={{
-          title: 'Wallet',
+          title: 'Payments',
           tabBarIcon: ({ color, focused }) => (
             <Icon
-              name="NOTIFICATION"
+              name="APPLICATION"
               size="MEDIUM"
               style={{ color }}
             />
           ),
-          tabBarLabel: 'Wallet',
+          tabBarLabel: 'Payments',
         }}
       />
 
