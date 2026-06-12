@@ -137,6 +137,46 @@ export default function ClientLayout() {
         }}
       />
 
+      {/* Saved Addresses */}
+      <Stack.Screen
+        name="saved-addresses"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Payment Methods */}
+      <Stack.Screen
+        name="payment-methods"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* My Reviews */}
+      <Stack.Screen
+        name="my-reviews"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Settings */}
+      <Stack.Screen
+        name="settings"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
+      {/* Help & Support */}
+      <Stack.Screen
+        name="help-support"
+        options={{
+          presentation: 'card',
+        }}
+      />
+
       {/* Chat List */}
       <Stack.Screen
         name="chat"
