@@ -28,7 +28,12 @@ export default function LoginScreen() {
     setTimeout(() => {
       setIsLoading(false);
       setAuthStep("authenticated");
-      router.push("/client/(tabs)/home");
+      // Redirect based on selected role
+      if (userRole === "provider") {
+        router.push("/provider/(tabs)/home");
+      } else {
+        router.push("/client/(tabs)/home");
+      }
     }, 1500);
   };
 
