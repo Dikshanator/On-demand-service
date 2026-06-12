@@ -26,8 +26,8 @@ export default function LoginScreen() {
   const handleLogin = () => {
     setIsLoading(true);
     setTimeout(() => {
-      setIsLoading(false);
       setAuthStep("authenticated");
+      setIsLoading(false);
       // Redirect based on selected role
       if (userRole === "provider") {
         router.push("/provider/(tabs)/home");
