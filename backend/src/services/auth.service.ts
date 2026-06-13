@@ -1,10 +1,24 @@
 import bcrypt from "bcrypt";
+import { Response } from "express";
 import { prisma } from "../config/prisma";
 import { generateOTP } from "../utils/otp";
 import { sendVerificationEmail } from "./email.service";
+import { ValidationUtils } from "../utils/validation";
 
 export const registerUser = async (data: any) => {
   const otp = generateOTP();
+
+  const existingUser = await prisma.user.findUnique({
+    where: { email: data.email }
+  });
+
+  if (existingUser) {
+    throw new Error("Email already in use");
+  }
+
+  if (!ValidationUtils.validatePassword(data.password)) {
+    throw new Error("Invalid password format");
+  }
 
   const expiresAt = new Date();
   expiresAt.setMinutes(expiresAt.getMinutes() + 10);
@@ -21,6 +35,13 @@ export const registerUser = async (data: any) => {
       verificationCode: otp,
       verificationExpiresAt: expiresAt,
       emailVerified: false,
+      role: data.role,
+
+      ...(data.role === "CLIENT" && {
+        client: {
+          create: {},
+        },
+      }),
     },
   });
 
@@ -37,13 +58,13 @@ import { generateToken } from "../utils/jwt";
 export const loginUser = async (data: any) => {
   const user = await prisma.user.findUnique({ where: { email: data.email } });
 
-  if (!user) throw new Error("User not found");
+  if (!user) throw new Error("Invalid Credentials");
   if (!user.emailVerified) throw new Error("Email not verified");
 
   const isMatch = await bcrypt.compare(data.password, user.password);
-  if (!isMatch) throw new Error("Invalid password");
+  if (!isMatch) throw new Error("Invalid Credentials");
 
-  const token = generateToken({ userID: user.userId, email: user.email });
+  const token = generateToken({ userId: user.userId, email: user.email });
 
-  return { token, user: { name: user.name, email: user.email } };
+  return { token, user: { name: user.name, email: user.email, role: user.role } };
 };
