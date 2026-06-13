@@ -1,7 +1,10 @@
 import { Router } from "express";
 import { createJobRequest, getJobs, getJobById, updateJob, cancelJob } from "../controllers/jobRequest";
+import authMiddleware from "../middleware/auth";
 
 const router = Router();
+
+router.use(authMiddleware);
 
 router.post("/", createJobRequest);
 router.get("/", getJobs);
