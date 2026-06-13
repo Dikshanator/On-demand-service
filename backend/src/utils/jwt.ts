@@ -4,7 +4,7 @@ const JWT_SECRET = process.env.JWT_SECRET || 'secret-key';
 const JWT_EXPIRES_IN = '7d';
 
 export interface JWTPayload {
-    userID: number,
+    userId: number,
     email: string
 }
 
