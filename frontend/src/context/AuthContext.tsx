@@ -11,6 +11,7 @@ export type AuthStep =
 interface RegistrationData {
   fullName: string;
   email: string;
+  phone: string;
   address: string;
   password: string;
   confirmPassword: string;
@@ -44,6 +45,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
   const [registrationData, setRegistrationData] = useState<RegistrationData>({
     fullName: '',
     email: '',
+    phone: '',
     address: '',
     password: '',
     confirmPassword: '',
@@ -60,6 +62,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     setRegistrationData({
       fullName: '',
       email: '',
+      phone: '',
       address: '',
       password: '',
       confirmPassword: '',
