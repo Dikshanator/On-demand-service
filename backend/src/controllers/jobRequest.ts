@@ -3,12 +3,12 @@ import { Request, Response } from "express";
 import { AuthRequest } from "../middleware/auth";
 import { ValidationUtils } from "../utils/validation";
 
-export const createJobRequest = async (req: Request, res: Response) => {
+export const createJobRequest = async (req: AuthRequest, res: Response) => {
     try {
-        // const clientId = req.user!.userId;
-        const clientId = 1
+        const clientId = req.user!.userId;
+        // const clientId = 1
 
-        const { jobTitle, jobDescription, jobImage, location, cost, scheduledDate, jobStatus, serviceCategoryId } = req.body;
+        const { jobTitle, jobDescription, jobImage, location, cost, scheduledDate, jobStatus, categoryId } = req.body;
 
         if (!jobTitle || !jobDescription || !location || !cost || !scheduledDate) {
             return res.status(400).json({ error: "Missing required fields" });
@@ -27,7 +27,7 @@ export const createJobRequest = async (req: Request, res: Response) => {
                     connect: { userId: clientId }
                 },
                 serviceCategory: {
-                    connect: { categoryId: serviceCategoryId }
+                    connect: { categoryId: Number(categoryId) }
                 },
             },
         })
@@ -93,11 +93,11 @@ export const getJobById = async (req: Request, res: Response) => {
         res.status(500).json({ error: "Failed to fetch job" });
     }
 };
-export const updateJob = async (req: Request, res: Response) => {
+export const updateJob = async (req: AuthRequest, res: Response) => {
     try {
         const { jobId } = req.params;
-        // const clientId = req.user!.userId;
-        const clientId = 1;
+        const clientId = req.user!.userId;
+        // const clientId = 1;
 
         const job = await prisma.jobRequest.findUnique({
             where: { jobId: Number(jobId) }
@@ -128,10 +128,10 @@ export const updateJob = async (req: Request, res: Response) => {
     }
 };
 
-export const cancelJob = async (req: Request, res: Response) => {
+export const cancelJob = async (req: AuthRequest, res: Response) => {
     try {
-        // const clientId = req.user!.userId;
-        const clientId = 1;
+        const clientId = req.user!.userId;
+        // const clientId = 1;
 
         const { jobId } = req.params;
 
