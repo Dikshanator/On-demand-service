@@ -1,18 +1,17 @@
 import { Request, Response } from "express";
 import { registerUser, loginUser } from "../services/auth.service";
 import { prisma } from "../config/prisma";
+import { sendWelcomeEmailClient } from "../services/email.service";
 
 // CLIENT REGISTER
 export const clientRegister = async (req: Request, res: Response) => {
   console.log("🔥 CONTROLLER HIT");
   try {
     const result = await registerUser(req.body);
-    return res.json(result);
+    return res.status(202).json({ result });
   } catch (err: any) {
-    console.error("REGISTER ERROR:", err);
-    return res.status(500).json({
+    return res.status(err.statusCode || 500).json({
       message: err.message,
-      stack: err.stack,
     });
   }
 };
@@ -21,7 +20,7 @@ export const clientRegister = async (req: Request, res: Response) => {
 export const clientLogin = async (req: Request, res: Response) => {
   try {
     const result = await loginUser(req.body);
-    return res.json(result);
+    return res.status(200).json({ message: "Login successful", result });
   } catch (err: any) {
     return res.status(400).json({ message: err.message });
   }
@@ -30,7 +29,6 @@ export const clientLogin = async (req: Request, res: Response) => {
 // VERIFY EMAIL
 export const verifyEmail = async (req: Request, res: Response) => {
   const { email, code } = req.body;
-
   const user = await prisma.user.findUnique({ where: { email } });
 
   if (!user) return res.status(404).json({ message: "User not found" });
@@ -57,5 +55,6 @@ export const verifyEmail = async (req: Request, res: Response) => {
     },
   });
 
+  await sendWelcomeEmailClient(user.email, user.name);
   return res.json({ message: "Email verified successfully" });
 };
