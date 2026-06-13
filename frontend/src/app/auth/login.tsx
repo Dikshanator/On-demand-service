@@ -13,6 +13,8 @@ import { useRouter } from "expo-router";
 import { useAuth } from "@/context/AuthContext";
 import { useTheme } from "@/hooks/use-theme";
 import { Icon } from "@/components/ui/icon";
+import Toast from 'react-native-toast-message';
+import { authApi } from "@/api/api";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -23,18 +25,28 @@ export default function LoginScreen() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     setIsLoading(true);
-    setTimeout(() => {
-      setAuthStep("authenticated");
-      setIsLoading(false);
-      // Redirect based on selected role
-      if (userRole === "provider") {
-        router.push("/provider/(tabs)/home");
-      } else {
+
+    try {
+      const response = await authApi.login(email, password);
+
+      if (response.result?.user?.role === "CLIENT") {
         router.push("/client/(tabs)/home");
+      } else if (response.result?.user?.role === "PROVIDER") {
+        router.push("/provider/(tabs)/home");
       }
-    }, 1500);
+
+    } catch (error: any) {
+      Toast.show({
+        type: "error",
+        text1: "Login failed",
+        text2: error.response?.data?.message || error.message || "An error occurred",
+        position: "bottom",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const handleForgotPassword = () => {
