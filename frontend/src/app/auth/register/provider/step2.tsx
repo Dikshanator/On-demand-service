@@ -220,7 +220,7 @@ export default function ProviderRegistrationStep2() {
               onPress={() => setSelectedService(service.id)}
             >
               {selectedService === service.id && (
-                <Text style={styles.serviceCheckmark}>✓</Text>
+                <Icon name="SUCCESS" size="LARGE" style={{ color: theme.accent }} />
               )}
               {/* Service category icon - TODO: Replace with service-specific icon assets */}
               <Icon name={service.iconName} size="LARGE" />

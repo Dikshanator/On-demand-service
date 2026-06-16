@@ -496,9 +496,7 @@ export default function ProviderHomeScreen() {
           <View style={styles.ratingRight}>
             <View style={styles.starsContainer}>
               {[...Array(5)].map((_, i) => (
-                <Text key={i} style={{ fontSize: 18 }}>
-                  ⭐
-                </Text>
+                <Icon key={i} name="STAR" size="MEDIUM" color="#FCD34D" />
               ))}
             </View>
             <Text style={styles.reviewCount}>{reviewCount} REVIEWS</Text>

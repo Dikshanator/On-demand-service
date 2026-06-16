@@ -242,7 +242,7 @@ export default function ClientRegistrationStep2() {
           onPress={() => setTermsAgreed(!termsAgreed)}
         >
           <View style={[styles.checkbox, termsAgreed && styles.checkboxChecked]}>
-            {termsAgreed && <Text style={styles.checkmark}>✓</Text>}
+            {termsAgreed && <Icon name="SUCCESS" size="SMALL" style={{ color: '#FFFFFF' }} />}
           </View>
           <Text style={styles.termsText}>
             I agree to the <Text style={styles.termsLink}>Terms of Service</Text> and{' '}

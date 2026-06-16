@@ -135,7 +135,7 @@ export default function ProviderRegistrationStep1() {
             placeholder="Enter your full name"
             value={registrationData.fullName}
             onChangeText={(text) => updateRegistrationData({ fullName: text })}
-            icon={<Text style={{ fontSize: 18 }}>👤</Text>}
+            icon={<Icon name="USER" size="MEDIUM" style={{ color: theme.primary }} />}
           />
 
           <Text style={styles.label}>Email Address</Text>
@@ -143,7 +143,7 @@ export default function ProviderRegistrationStep1() {
             placeholder="Enter your email address"
             value={registrationData.email}
             onChangeText={(text) => updateRegistrationData({ email: text })}
-            icon={<Text style={{ fontSize: 18 }}>✉️</Text>}
+            icon={<Icon name="EMAIL" size="MEDIUM" style={{ color: theme.primary }} />}
             keyboardType="email-address"
           />
 
@@ -152,7 +152,7 @@ export default function ProviderRegistrationStep1() {
             placeholder="Your city or area"
             value={registrationData.address}
             onChangeText={(text) => updateRegistrationData({ address: text })}
-            icon={<Text style={{ fontSize: 18 }}>📍</Text>}
+            icon={<Icon name="LOCATION" size="MEDIUM" style={{ color: theme.primary }} />}
           />
 
           <Text style={styles.label}>Password</Text>
@@ -160,7 +160,7 @@ export default function ProviderRegistrationStep1() {
             placeholder="Create a password"
             value={registrationData.password}
             onChangeText={(text) => updateRegistrationData({ password: text })}
-            icon={<Text style={{ fontSize: 18 }}>🔒</Text>}
+            icon={<Icon name="LOCK" size="MEDIUM" style={{ color: theme.primary }} />}
             secureTextEntry
           />
 
@@ -169,7 +169,7 @@ export default function ProviderRegistrationStep1() {
             placeholder="Confirm your password"
             value={registrationData.confirmPassword}
             onChangeText={(text) => updateRegistrationData({ confirmPassword: text })}
-            icon={<Text style={{ fontSize: 18 }}>🔒</Text>}
+            icon={<Icon name="LOCK" size="MEDIUM" style={{ color: theme.primary }} />}
             secureTextEntry
           />
         </View>

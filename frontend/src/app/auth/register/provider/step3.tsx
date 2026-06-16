@@ -244,7 +244,7 @@ export default function ProviderRegistrationStep3() {
             {/* Camera icon - TODO: Replace with camera icon asset */}
             <Icon name="CAMERA" size="XLARGE" />
             <Text style={styles.uploadTitle}>Tap to upload front</Text>
-            <Text style={styles.uploadSubtitle}>{hasFrontPhoto ? 'Photo added ✓' : 'Upload document front'}</Text>
+            <Text style={styles.uploadSubtitle}>{hasFrontPhoto ? 'Photo added' : 'Upload document front'}</Text>
           </Pressable>
         </View>
 
@@ -254,7 +254,7 @@ export default function ProviderRegistrationStep3() {
             {/* Camera icon - TODO: Replace with camera icon asset */}
             <Icon name="CAMERA" size="XLARGE" />
             <Text style={styles.uploadTitle}>Tap to upload back</Text>
-            <Text style={styles.uploadSubtitle}>{hasBackPhoto ? 'Photo added ✓' : 'Upload document back'}</Text>
+            <Text style={styles.uploadSubtitle}>{hasBackPhoto ? 'Photo added' : 'Upload document back'}</Text>
           </Pressable>
         </View>
 
@@ -266,7 +266,7 @@ export default function ProviderRegistrationStep3() {
             <Text style={styles.uploadTitle}>Selfie with ID</Text>
             <Text style={styles.uploadSubtitle}>Ensure your face and ID details are clearly visible</Text>
           </Pressable>
-          {hasSelfie && <Text style={{ fontSize: 12, color: theme.accent, marginTop: Spacing.one }}>✓ Selfie added</Text>}
+          {hasSelfie && <Text style={{ fontSize: 12, color: theme.accent, marginTop: Spacing.one }}><Icon name="SUCCESS" size="SMALL" style={{ color: theme.accent }} /> Selfie added</Text>}
         </View>
       </View>
 

@@ -202,7 +202,7 @@ export default function ClientRegistrationStep1() {
             placeholder="Your city or area (e.g. Kathmandu, Lalitpur)"
             value={registrationData.address}
             onChangeText={(text) => updateRegistrationData({ address: text })}
-            icon={<Text style={{ fontSize: 18 }}>📍</Text>}
+            icon={<Icon name="LOCATION" size="MEDIUM" style={{ color: theme.primary }} />}
           />
 
           <Text style={styles.label}>Password</Text>
