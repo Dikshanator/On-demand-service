@@ -13,6 +13,8 @@ import { Button } from '@/components/ui/button';
 import { ProgressIndicator } from '@/components/ui/progress-indicator';
 import { useAuth } from '@/context/AuthContext';
 import { Icon } from '@/components/ui/icon';
+import { authApi } from '@/api/api';
+import Toast from 'react-native-toast-message';
 
 export default function ClientRegistrationStep2() {
   const theme = useTheme();
@@ -21,6 +23,7 @@ export default function ClientRegistrationStep2() {
   const [hasPhoto, setHasPhoto] = useState(!!registrationData.profilePhoto);
   const [termsAgreed, setTermsAgreed] = useState(registrationData.termsAgreed);
   const [isLoading, setIsLoading] = useState(false);
+  const { resetAuth } = useAuth();
 
   const styles = StyleSheet.create({
     container: {
@@ -154,13 +157,43 @@ export default function ClientRegistrationStep2() {
     },
   });
 
-  const handleCreateAccount = () => {
+  const handleCreateAccount = async () => {
     updateRegistrationData({ termsAgreed });
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
+
+    try {
+      const payload = {
+        name: registrationData.fullName,
+        email: registrationData.email,
+        phone: registrationData.phone,
+        address: registrationData.address,
+        password: registrationData.password,
+        profile_image: registrationData.profilePhoto || "",
+        role: "CLIENT",
+      };
+      setIsLoading(true);
+
+      const response = await authApi.register(payload);
+      
+      Toast.show({
+        type: "success",
+        text1: "Account created successfully!",
+        text2: response.result?.message,
+        position: "bottom",
+      });
       router.push('/auth/account-created');
-    }, 1500);
+
+    } catch (error: any) {
+      console.error(error);
+      Toast.show({
+        type: "error",
+        text1: "Registration failed",
+        text2: error.response?.data?.message || error.message || "An error occurred",
+        position: "bottom",
+      });
+    } finally {
+      setIsLoading(false);
+      resetAuth();
+    }
   };
 
   return (

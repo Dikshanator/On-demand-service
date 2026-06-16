@@ -4,12 +4,18 @@
 // Get a free hosted Postgres database in seconds: `npx create-db`
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  CLIENT
+  SERVICE_PROVIDER
+  ADMIN
 }
 
 enum VerificationStatus {
@@ -52,7 +58,7 @@ model User {
   phone        String  @db.VarChar(20)
   address      String? @db.Text
   profileImage String  @map("profile_image") @db.Text
-  isAdmin      Boolean @default(false) @map("is_admin")
+  role         Role    @default(CLIENT)
 
   // For Email/OTP verification
   verificationCode      String?

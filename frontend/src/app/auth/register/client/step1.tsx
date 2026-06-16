@@ -21,7 +21,6 @@ export default function ClientRegistrationStep1() {
   const router = useRouter();
   const { registrationData, updateRegistrationData } = useAuth();
   const [isLoading, setIsLoading] = useState(false);
-  const [termsAgreed, setTermsAgreed] = useState(registrationData.termsAgreed);
 
   const styles = StyleSheet.create({
     container: {
@@ -134,10 +133,9 @@ export default function ClientRegistrationStep1() {
   });
 
   const handleNext = () => {
-    if (!registrationData.fullName || !registrationData.email || !registrationData.address || !registrationData.password || !termsAgreed) {
+    if (!registrationData.fullName || !registrationData.email || !registrationData.address || !registrationData.password) {
       return;
     }
-    updateRegistrationData({ termsAgreed });
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
@@ -147,8 +145,7 @@ export default function ClientRegistrationStep1() {
 
   const canContinue = registrationData.fullName && registrationData.email && 
                       registrationData.address && registrationData.password && 
-                      registrationData.password === registrationData.confirmPassword &&
-                      termsAgreed;
+                      registrationData.password === registrationData.confirmPassword;
 
   return (
     <KeyboardAvoidingView
@@ -191,6 +188,14 @@ export default function ClientRegistrationStep1() {
           <Text style={{ fontSize: 12, color: theme.textSecondary, marginBottom: Spacing.three }}>
             We&apos;ll send a verification link to this email
           </Text>
+          <Text style={styles.label}>Phone Number</Text>
+          <Input
+            placeholder="Enter your phone number"
+            value={registrationData.phone}
+            onChangeText={(text) => updateRegistrationData({ phone: text })}
+            icon={<Text style={{ fontSize: 18 }}>✉️</Text>}
+            keyboardType="phone-pad"
+          />
 
           <Text style={styles.label}>Address</Text>
           <Input
@@ -217,19 +222,6 @@ export default function ClientRegistrationStep1() {
             icon={<Text style={{ fontSize: 18 }}>🔒</Text>}
             secureTextEntry
           />
-
-          <Pressable
-            style={[styles.termsContainer, termsAgreed && { borderColor: theme.accent }]}
-            onPress={() => setTermsAgreed(!termsAgreed)}
-          >
-            <View style={[styles.checkbox, termsAgreed && styles.checkboxChecked]}>
-              {termsAgreed && <Text style={styles.checkmark}>✓</Text>}
-            </View>
-            <Text style={styles.termsText}>
-              I agree to the <Text style={styles.termsLink}>Terms of Service</Text> and{' '}
-              <Text style={styles.termsLink}>Privacy Policy</Text>
-            </Text>
-          </Pressable>
         </View>
 
         <View style={styles.footer}>

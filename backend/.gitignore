@@ -19,8 +19,6 @@ yarn-debug.log*
 yarn-error.log*
 
 # Prisma
-prisma/migrations/dev/
-prisma/migrations/
 *.db
 *.db-journal
 
@@ -41,3 +39,4 @@ coverage/
 # Optional
 tmp/
 temp/
+/src/generated/prisma

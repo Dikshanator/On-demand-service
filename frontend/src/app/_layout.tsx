@@ -4,6 +4,8 @@ import { Stack } from "expo-router";
 // Suppress TS error for side-effect CSS import when no declaration file is present
 // @ts-ignore
 import "../global.css";
+import Toast from "react-native-toast-message";
+import { toastConfig } from "@/components/toast/toastConfig";
 
 import { AnimatedSplashOverlay } from "@/components/animated-icon";
 import { AuthProvider } from "@/context/AuthContext";
@@ -15,6 +17,7 @@ export default function RootLayout() {
       <AuthProvider>
         <AnimatedSplashOverlay />
         <Stack screenOptions={{ headerShown: false }} />
+        <Toast config={toastConfig} />
       </AuthProvider>
     </ThemeProvider>
   );
