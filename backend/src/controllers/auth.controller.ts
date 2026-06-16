@@ -10,10 +10,13 @@ export const clientRegister = async (req: Request, res: Response) => {
     const result = await registerUser(req.body);
     return res.status(202).json({ result });
   } catch (err: any) {
-    return res.status(err.statusCode || 500).json({
-      message: err.message,
-    });
-  }
+  console.error("REGISTER ERROR:", err);
+
+  return res.status(err.statusCode || 500).json({
+    message: err.message,
+    stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
+  });
+}
 };
 
 // CLIENT LOGIN (placeholder for now)
