@@ -288,7 +288,7 @@ export default function ProviderProfileScreen() {
           <View style={styles.profileStats}>
             <View style={styles.statItem}>
               <Text style={styles.statValue}>{profile.rating}</Text>
-              <Text style={styles.statLabel}>Rating ⭐</Text>
+              <Text style={styles.statLabel}>Rating <Icon name="STAR" size="MEDIUM" color="#FCD34D" /></Text>
             </View>
             <View style={styles.statItem}>
               <Text style={styles.statValue}>{profile.reviews}</Text>
@@ -362,7 +362,7 @@ export default function ProviderProfileScreen() {
                       !category.verified && styles.categoryStatusUnverified,
                     ]}
                   >
-                    {category.verified ? '✓ Verified' : 'Pending Verification'}
+                    {category.verified ? <><Icon name="SUCCESS" size="SMALL" style={{ color: '#10B981' }} /> Verified</> : 'Pending Verification'}
                   </Text>
                 </View>
               </View>

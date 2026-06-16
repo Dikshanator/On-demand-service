@@ -56,10 +56,7 @@ export default function AccountCreatedScreen() {
               borderColor: theme.accent,
             }}
           >
-            {/* TODO: Replace with actual checkmark SVG - Teal/cyan colored circle with checkmark */}
-            <Text className="text-5xl" style={{ color: theme.accent }}>
-              ✓
-            </Text>
+            <Icon name="SUCCESS" size="XXLARGE" color={theme.accent} />
           </View>
 
           <Text

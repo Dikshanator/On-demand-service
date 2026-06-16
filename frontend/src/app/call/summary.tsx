@@ -263,7 +263,7 @@ export default function CallSummaryScreen() {
           <View style={styles.callerImage}>
             <Icon name="USER" size="XXLARGE" />
             <View style={styles.verifiedBadge}>
-              <Text style={{ fontSize: 16 }}>✓</Text>
+              <Icon name="SUCCESS" size="SMALL" style={{ color: '#06B6D4' }} />
             </View>
           </View>
 
@@ -272,7 +272,7 @@ export default function CallSummaryScreen() {
 
           <View style={styles.statusBadge}>
             <Text style={styles.statusText}>
-              ✓ SECURE CALL ENDED
+              <Icon name="SUCCESS" size="SMALL" style={{ color: '#06B6D4' }} /> SECURE CALL ENDED
             </Text>
           </View>
         </View>
@@ -338,7 +338,7 @@ export default function CallSummaryScreen() {
                   callQualityRating === 'good' && styles.ratingButtonActive,
                 ]}
               >
-                <Text style={styles.ratingEmoji}>😊</Text>
+                <Icon name="HEART" size="LARGE" style={{ color: '#EC4899' }} />
               </Pressable>
             </Pressable>
           </View>

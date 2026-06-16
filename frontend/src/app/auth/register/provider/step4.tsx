@@ -11,7 +11,7 @@ import { useTheme } from '@/hooks/use-theme';
 import { Spacing } from '@/constants/theme';
 import { Button } from '@/components/ui/button';
 import { ProgressIndicator } from '@/components/ui/progress-indicator';
-import { useAuth } from '@/context/AuthContext';
+import { Icon } from '@/components/ui/icon';
 
 export default function ProviderRegistrationStep4() {
   const theme = useTheme();
@@ -230,10 +230,10 @@ export default function ProviderRegistrationStep4() {
             style={styles.uploadBox}
             onPress={() => setHasCertificate(!hasCertificate)}
           >
-            <Text style={styles.uploadIcon}>📄</Text>
+            <Icon name="DOCUMENT" size="XLARGE" />
             <Text style={styles.uploadTitle}>Tap to upload certificate</Text>
             <Text style={styles.uploadSubtitle}>
-              {hasCertificate ? 'Certificate uploaded ✓' : 'Choose file'}
+              {hasCertificate ? 'Certificate uploaded' : 'Choose file'}
             </Text>
           </Pressable>
           <Text style={styles.note}>
@@ -253,10 +253,10 @@ export default function ProviderRegistrationStep4() {
             style={styles.uploadBox}
             onPress={() => setHasVideo(!hasVideo)}
           >
-            <Text style={styles.uploadIcon}>🎥</Text>
+            <Icon name="UPLOAD" size="XLARGE" />
             <Text style={styles.uploadTitle}>Upload Intro Video</Text>
             <Text style={styles.uploadSubtitle}>
-              {hasVideo ? 'Video uploaded ✓' : 'Choose file'}
+              {hasVideo ? 'Video uploaded' : 'Choose file'}
             </Text>
           </Pressable>
           <Text style={styles.note}>Max 50MB, MP4 format.</Text>
@@ -267,7 +267,7 @@ export default function ProviderRegistrationStep4() {
           onPress={() => setTermsAgreed(!termsAgreed)}
         >
           <View style={[styles.checkbox, termsAgreed && styles.checkboxChecked]}>
-            {termsAgreed && <Text style={styles.checkmark}>✓</Text>}
+            {termsAgreed && <Icon name="SUCCESS" size="SMALL" style={{ color: '#FFFFFF' }} />}
           </View>
           <Text style={styles.termsText}>
             I agree to the <Text style={styles.termsLink}>Terms of Service</Text> and{' '}

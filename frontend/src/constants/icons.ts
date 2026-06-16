@@ -1,77 +1,99 @@
 /**
  * Icon/Asset Management System
  * 
- * This file centralizes all icon and asset definitions used throughout the app.
- * To replace with your own assets/icons:
- * 1. Replace the emoji strings with require() paths to image files
- * 2. Or replace with SvgIcon components
- * 3. No other files need to be modified
+ * Uses react-native-vector-icons (MaterialCommunityIcons) for all icons.
+ * Icons are rendered with proper colors through the Icon component.
  * 
- * Example replacement:
- * OLD: HOME: '🏠',
- * NEW: HOME: require('@/assets/icons/home.svg'),
+ * Icon naming convention: Use the MaterialCommunityIcons icon name
+ * Reference: https://icons.materialdesignicons.com/
  */
 
 export const Icons = {
   // Navigation & UI
-  HOME: '🏠',           // TODO: Replace with home icon asset
-  BACK: '←',            // TODO: Replace with back arrow asset
-  MENU: '☰',            // TODO: Replace with menu icon asset
+  HOME: 'home',
+  BACK: 'arrow-left',
+  MENU: 'menu',
   
   // Input & Forms
-  CAMERA: '📷',         // TODO: Replace with camera icon asset
-  EMAIL: '✉️',          // TODO: Replace with email/envelope icon asset
-  LOCK: '🔒',           // TODO: Replace with lock icon asset
-  EYE: '👁️',           // TODO: Replace with eye/visibility icon asset
-  EYE_HIDDEN: '👁️‍🗨️',  // TODO: Replace with eye-hidden icon asset
+  CAMERA: 'camera',
+  EMAIL: 'email',
+  LOCK: 'lock',
+  EYE: 'eye',
+  EYE_HIDDEN: 'eye-off',
   
   // Users & Roles
-  USER: '👤',           // TODO: Replace with user/person icon asset
-  PROFESSIONAL: '💼',  // TODO: Replace with briefcase icon asset
+  USER: 'account',
+  PROFESSIONAL: 'briefcase',
   
   // Status & Indicators
-  SUCCESS: '✅',        // TODO: Replace with checkmark icon asset
-  PENDING: '⏳',        // TODO: Replace with pending/clock icon asset
-  PROCESSING: '⚙️',    // TODO: Replace with gear/processing icon asset
-  WARNING: '⚠️',        // TODO: Replace with warning icon asset
-  ERROR: '❌',          // TODO: Replace with error/X icon asset
-  APPLICATION: '📋',   // TODO: Replace with clipboard/application icon asset
-  NOTIFICATION: '🔔',  // TODO: Replace with notification bell icon asset
+  SUCCESS: 'check-circle',
+  PENDING: 'clock',
+  PROCESSING: 'cog',
+  WARNING: 'alert',
+  ERROR: 'close-circle',
+  APPLICATION: 'clipboard-list',
+  NOTIFICATION: 'bell',
   
   // Theme
-  SUN: '☀️',            // TODO: Replace with sun icon asset
-  MOON: '🌙',           // TODO: Replace with moon icon asset
+  SUN: 'white-balance-sunny',
+  MOON: 'moon-waning-crescent',
   
   // Social
-  GOOGLE: '🔵',         // TODO: Use actual Google icon or image
-  APPLE: '🍎',          // TODO: Use actual Apple icon or image
+  GOOGLE: 'google',
+  APPLE: 'apple',
   
   // Documents & Files
-  DOCUMENT: '📄',       // TODO: Replace with document icon asset
-  UPLOAD: '📤',         // TODO: Replace with upload icon asset
-  DOWNLOAD: '📥',       // TODO: Replace with download icon asset
+  DOCUMENT: 'file-document',
+  UPLOAD: 'upload',
+  DOWNLOAD: 'download',
   
-  // Service Categories (for provider registration)
-  ELECTRICIAN: '⚡',    // TODO: Replace with electrician icon asset
-  PLUMBER: '🔧',        // TODO: Replace with wrench/plumber icon asset
-  MECHANIC: '🔨',       // TODO: Replace with hammer icon asset
-  CLEANER: '🧹',        // TODO: Replace with broom/cleaning icon asset
-  TUTOR: '🎓',          // TODO: Replace with graduation cap icon asset
-  HANDYMAN: '🛠️',       // TODO: Replace with toolbox icon asset
-  REPAIR_TECH: '⚙️',    // TODO: Replace with settings/repair icon asset
+  // Service Categories
+  ELECTRICIAN: 'lightning-bolt',
+  PLUMBER: 'pipe',
+  MECHANIC: 'wrench',
+  CLEANER: 'broom',
+  TUTOR: 'school',
+  HANDYMAN: 'toolbox',
+  REPAIR_TECH: 'tools',
   
   // Document Types
-  EDIT: '✏️',           // TODO: Replace with edit/pencil icon asset
-  TRASH: '🗑️',          // TODO: Replace with delete/trash icon asset
+  EDIT: 'pencil',
+  TRASH: 'trash-can',
   
   // Notifications & Alerts
-  BELL: '🔔',           // TODO: Replace with bell icon asset
-  MAIL: '📬',           // TODO: Replace with mailbox icon asset
+  BELL: 'bell',
+  MAIL: 'mailbox',
   
   // Generic
-  ARROW_RIGHT: '→',     // TODO: Replace with right arrow icon asset
-  ARROW_LEFT: '←',      // TODO: Replace with left arrow icon asset
-  CLOSE: '✕',           // TODO: Replace with close/X icon asset
+  ARROW_RIGHT: 'arrow-right',
+  ARROW_LEFT: 'arrow-left',
+  CLOSE: 'close',
+  
+  // Additional icons needed for ratings/reviews
+  STAR: 'star',
+  STAR_OUTLINE: 'star-outline',
+  
+  // Location
+  LOCATION: 'map-marker',
+  
+  // Payment & Transactions
+  CREDIT_CARD: 'credit-card',
+  WALLET: 'wallet',
+  CASH: 'cash',
+  
+  // Additional utility icons
+  PHONE: 'phone',
+  MESSAGE: 'message',
+  SETTINGS: 'cog',
+  HELP: 'help-circle',
+  CHECKMARK: 'check',
+  CHECK_ALL: 'check-all',
+  HEART: 'heart',
+  HEART_OUTLINE: 'heart-outline',
+  SHARE: 'share-variant',
+  SEARCH: 'magnify',
+  FILTER: 'filter',
+  SORT: 'sort',
 } as const;
 
 /**
@@ -79,85 +101,278 @@ export const Icons = {
  * Use these for consistent icon sizing across the app
  */
 export const IconSizes = {
-  SMALL: 16,    // For badges, small indicators
-  MEDIUM: 24,   // For standard icons
-  LARGE: 32,    // For feature icons, avatars
-  XLARGE: 48,   // For hero sections, large displays
-  XXLARGE: 80,  // For splash screens, large illustrations
+  SMALL: 16,
+  MEDIUM: 24,
+  LARGE: 32,
+  XLARGE: 48,
+  XXLARGE: 80,
 } as const;
 
 /**
- * Asset placeholder mapping
- * For tracking where real assets should go
- * 
- * Structure:
- * - screen/component name
- * - location in component
- * - current placeholder
- * - intended purpose
+ * Asset Requirements List
+ * Professional assets needed for the application
  */
-export const AssetPlaceholders = {
-  // Logo & Branding
-  APP_LOGO: {
-    current: '🏠',
-    description: 'App logo - Home/House icon',
-    replacement: 'assets/images/logo.png or SVG component',
+export const AssetRequirements = {
+  // Branding & Logo
+  branding: {
+    appLogo: {
+      name: 'hamroSewa App Logo',
+      formats: ['PNG (512x512)', 'SVG'],
+      purpose: 'Main app icon and branding',
+      locations: ['Splash screen', 'App icon', 'Authentication screens'],
+    },
+    logoDark: {
+      name: 'hamroSewa Logo (Dark Mode)',
+      formats: ['PNG (512x512)', 'SVG'],
+      purpose: 'Logo variant for dark theme',
+      locations: ['All screens in dark mode'],
+    },
   },
-  
+
   // Authentication Screens
-  LOGIN_SOCIAL_GOOGLE: {
-    current: '🔵', // using Google icon
-    description: 'Google login button icon',
-    replacement: 'assets/images/google-icon.png',
-    files: ['src/app/auth/login.tsx'],
+  authentication: {
+    onboardingHeroImage: {
+      name: 'Onboarding Hero Illustration',
+      formats: ['PNG', 'SVG'],
+      dimensions: 'Full screen width',
+      purpose: 'Welcome/splash screen background',
+      locations: ['Role Selection Screen'],
+    },
+    socialIconGoogle: {
+      name: 'Google Login Icon',
+      formats: ['PNG', 'SVG'],
+      dimensions: '48x48 or vector',
+      purpose: 'Social login button',
+      locations: ['Login screen', 'Registration screens'],
+    },
+    socialIconApple: {
+      name: 'Apple Login Icon',
+      formats: ['PNG', 'SVG'],
+      dimensions: '48x48 or vector',
+      purpose: 'Social login button',
+      locations: ['Login screen', 'Registration screens'],
+    },
+    successCheckmark: {
+      name: 'Success Checkmark Animation',
+      formats: ['Lottie JSON', 'SVG'],
+      purpose: 'Account created confirmation',
+      locations: ['Account Created screen'],
+    },
+    emailVerificationIcon: {
+      name: 'Email Verification Icon',
+      formats: ['PNG', 'SVG'],
+      dimensions: '64x64 or larger',
+      purpose: 'Email confirmation visual',
+      locations: ['Forgot Password', 'Email verification screens'],
+    },
   },
-  LOGIN_SOCIAL_APPLE: {
-    current: '🍎', // using Apple icon
-    description: 'Apple login button icon',
-    replacement: 'assets/images/apple-icon.png',
-    files: ['src/app/auth/login.tsx'],
+
+  // Client-Facing Screens
+  clientScreens: {
+    emptyStateIllustration: {
+      name: 'Empty State Illustrations',
+      formats: ['SVG'],
+      purpose: 'Show when no bookings, payments, reviews exist',
+      locations: ['Bookings', 'Payments', 'My Reviews', 'Chat screens'],
+    },
+    providerDefaultAvatar: {
+      name: 'Default Provider Avatar',
+      formats: ['PNG'],
+      dimensions: '128x128',
+      purpose: 'Fallback when provider image unavailable',
+      locations: ['All provider listings and profiles'],
+    },
+    locationPin: {
+      name: 'Location Pin Icon (Colored)',
+      formats: ['PNG', 'SVG'],
+      purpose: 'Map location indicator',
+      locations: ['Provider profiles', 'Live tracking', 'Saved addresses'],
+    },
+    serviceCategory: {
+      name: 'Service Category Icons (12 types)',
+      formats: ['PNG (64x64)', 'SVG'],
+      types: ['Electrical', 'Plumbing', 'AC Repair', 'Cleaning', 'Painting', 'Carpentry', 'Tutoring', 'Fitness', 'Photography', 'IT Support', 'Appliance Repair', 'General Maintenance'],
+      locations: ['Browse Services', 'Search results', 'Provider profiles'],
+    },
   },
-  
-  // Account Created Screen
-  ACCOUNT_CREATED_SUCCESS: {
-    current: '✅',
-    description: 'Success checkmark icon',
-    replacement: 'assets/images/success-checkmark.svg or PNG',
-    files: ['src/app/auth/account-created.tsx'],
+
+  // Provider-Facing Screens
+  providerScreens: {
+    jobRequestNotification: {
+      name: 'Job Request Notification Icon',
+      formats: ['PNG', 'SVG'],
+      dimensions: '64x64',
+      purpose: 'New job request indicator',
+      locations: ['Home dashboard', 'Notifications'],
+    },
+    performanceRatingBadge: {
+      name: 'Rating Star Badge',
+      formats: ['PNG', 'SVG'],
+      purpose: 'Performance rating display',
+      locations: ['Dashboard', 'Profile', 'Earnings'],
+    },
+    documentVerificationBadge: {
+      name: 'Document Verification Badge',
+      formats: ['PNG', 'SVG'],
+      purpose: 'Verified status indicator',
+      locations: ['Provider profile', 'Registration complete screen'],
+    },
   },
-  
-  // Application Submitted Screen
-  APPLICATION_CLIPBOARD: {
-    current: '📋',
-    description: 'Application/clipboard icon',
-    replacement: 'assets/images/application-clipboard.svg or PNG',
-    files: ['src/app/auth/application-submitted.tsx'],
+
+  // Maps & Location
+  maps: {
+    mapProvider: {
+      name: 'Map Service',
+      purpose: 'Live tracking and location services',
+      note: 'Integrate Google Maps or equivalent',
+      locations: ['Live tracking screen', 'Saved addresses', 'Provider proximity'],
+    },
+    userLocationPin: {
+      name: 'User Location Pin',
+      formats: ['PNG', 'SVG'],
+      color: 'Primary brand color',
+      locations: ['Live tracking map'],
+    },
+    providerLocationPin: {
+      name: 'Provider Location Pin',
+      formats: ['PNG', 'SVG'],
+      color: 'Accent color',
+      locations: ['Live tracking map'],
+    },
   },
-  APPLICATION_CHECKMARK: {
-    current: '✅',
-    description: 'Application submitted checkmark',
-    replacement: 'assets/images/checkmark-teal.svg or PNG',
-    files: ['src/app/auth/application-submitted.tsx'],
+
+  // Payment & Transactions
+  payments: {
+    paymentMethodIcons: {
+      name: 'Payment Method Icons',
+      formats: ['PNG', 'SVG'],
+      methods: ['Credit Card', 'Debit Card', 'Mobile Money', 'Bank Transfer', 'Cash on Delivery'],
+      locations: ['Payment Methods screen', 'Checkout'],
+    },
+    transactionStatusIcons: {
+      name: 'Transaction Status Icons',
+      formats: ['PNG', 'SVG'],
+      statuses: ['Completed (Green)', 'Pending (Orange)', 'Failed (Red)', 'Refunded (Blue)'],
+      locations: ['Payment history', 'Transaction details'],
+    },
   },
-  DOCUMENT_VERIFICATION_ICON: {
-    current: '🏛️',
-    description: 'Document verification icon',
-    replacement: 'assets/images/document-verification.svg or PNG',
-    files: ['src/app/auth/application-submitted.tsx'],
+
+  // Communication
+  communication: {
+    chatBubbleIcons: {
+      name: 'Chat Message Icons',
+      formats: ['SVG'],
+      purpose: 'Message delivery status indicators',
+      statuses: ['Sent', 'Delivered', 'Read', 'Failed'],
+      locations: ['Chat screens'],
+    },
+    callStatusIcons: {
+      name: 'Call Status Icons',
+      formats: ['SVG'],
+      statuses: ['Incoming', 'Outgoing', 'Missed', 'Ended'],
+      locations: ['Call screens', 'Chat integration'],
+    },
+    voiceWaveform: {
+      name: 'Voice/Audio Waveform Animation',
+      formats: ['Lottie JSON'],
+      purpose: 'Active call indicator',
+      locations: ['Active call screen', 'Voice message playback'],
+    },
   },
-  ACCOUNT_LOCK_ICON: {
-    current: '🔒',
-    description: 'Account lock/pending icon',
-    replacement: 'assets/images/lock-pending.svg or PNG',
-    files: ['src/app/auth/application-submitted.tsx'],
+
+  // Reviews & Ratings
+  reviews: {
+    starRatingGraphics: {
+      name: 'Star Rating System',
+      formats: ['SVG components'],
+      ratings: ['1-star through 5-star variants'],
+      colors: ['Filled (Gold)', 'Outlined', 'Half-filled'],
+      locations: ['Reviews', 'Ratings display', 'Rating input'],
+    },
+    reviewDefaultAvatar: {
+      name: 'Reviewer Avatar Placeholder',
+      formats: ['PNG'],
+      dimensions: '48x48',
+      purpose: 'Default user avatar in reviews',
+      locations: ['My Reviews screen', 'Review displays'],
+    },
   },
-  
-  // Forgot Password Screen
-  FORGOT_PASSWORD_ICON: {
-    current: '💌',
-    description: 'Email/forgot password icon',
-    replacement: 'assets/images/email-security.svg or PNG',
-    files: ['src/app/auth/forgot-password.tsx'],
+
+  // Navigation & UI Components
+  ui: {
+    tabBarIcons: {
+      name: 'Tab Navigation Icons (Filled & Outline)',
+      formats: ['PNG', 'SVG'],
+      tabs: ['Home', 'Search/Browse', 'Bookings', 'Chat', 'Profile', 'Payments'],
+      states: ['Active (Filled)', 'Inactive (Outlined)'],
+      locations: ['Bottom tab bar', 'All screens'],
+    },
+    notificationBadge: {
+      name: 'Notification Badge/Counter',
+      formats: ['SVG'],
+      purpose: 'Unread messages/notifications indicator',
+      locations: ['Tab bar', 'Chat list', 'Notification icons'],
+    },
+    loadingSpinner: {
+      name: 'Loading Spinner Animation',
+      formats: ['Lottie JSON', 'GIF'],
+      purpose: 'Data loading indicator',
+      locations: ['All data-loading screens'],
+    },
+    skeletonLoader: {
+      name: 'Skeleton Loader Animations',
+      formats: ['CSS/Lottie'],
+      purpose: 'Content placeholder during loading',
+      locations: ['Search results', 'Provider listings', 'Transaction history'],
+    },
+  },
+
+  // Status Indicators
+  statusIndicators: {
+    onlineStatus: {
+      name: 'Online/Offline Indicator',
+      formats: ['SVG'],
+      colors: ['Green (Online)', 'Gray (Offline)'],
+      locations: ['Chat messages', 'Provider profiles', 'Contact cards'],
+    },
+    jobStatusBadges: {
+      name: 'Job Status Badges',
+      formats: ['SVG'],
+      statuses: ['Pending', 'In Progress', 'Completed', 'Cancelled'],
+      colors: ['Orange', 'Blue', 'Green', 'Red'],
+      locations: ['Job lists', 'Job details', 'Schedule'],
+    },
+    verificationStatus: {
+      name: 'Verification Status Badges',
+      formats: ['SVG'],
+      statuses: ['Verified', 'Pending', 'Rejected'],
+      locations: ['Provider profiles', 'Registration progress'],
+    },
+  },
+
+  // Background & Decorative
+  backgrounds: {
+    gradientBackgrounds: {
+      name: 'Gradient Background Assets',
+      formats: ['SVG patterns or PNG'],
+      purpose: 'Header backgrounds, accent sections',
+      locations: ['All screen headers', 'CTA sections'],
+    },
+    decorativePatterns: {
+      name: 'Decorative SVG Patterns',
+      formats: ['SVG'],
+      purpose: 'Visual enhancement without distraction',
+      locations: ['Authentication screens', 'Success screens'],
+    },
+  },
+
+  // Accessibility
+  accessibility: {
+    accessibilityIcons: {
+      note: 'All icons should have proper ARIA labels and color contrast (4.5:1 for text)',
+      colorBlindFriendly: 'Use patterns + color for status indicators',
+      darkModeSupport: 'All assets should support dark theme with proper contrast',
+    },
   },
 } as const;
 

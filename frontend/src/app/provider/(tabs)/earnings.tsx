@@ -392,7 +392,7 @@ export default function ProviderEarningsScreen() {
             </View>
             <View style={styles.statItem}>
               <Text style={styles.statLabel}>Avg. Rating</Text>
-              <Text style={styles.statValue}>⭐ {averageRating}</Text>
+              <Text style={styles.statValue}><Icon name="STAR" size="MEDIUM" color="#FCD34D" /> {averageRating}</Text>
             </View>
           </View>
         </View>
