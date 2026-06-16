@@ -1,6 +1,6 @@
-# hamroSewa - Project Setup Guide
+# hamroSewa - Project Setup & Configuration Guide
 
-Complete guide for setting up and running the hamroSewa on-demand service platform locally.
+Complete guide for setting up and running the hamroSewa on-demand service platform locally for development.
 
 ## Quick Start (5 minutes)
 
@@ -27,6 +27,8 @@ Access at: http://localhost:19000
 ---
 
 ## System Requirements
+
+All platforms require the following prerequisites:
 
 ### Hardware
 - **Minimum:** 8GB RAM, 10GB free disk space
@@ -170,10 +172,11 @@ See `frontend/.env.example` for all options.
 ```bash
 cd backend
 
-# Create tables
+# Create database and tables
+createdb hamrosewa
 npx prisma migrate deploy
 
-# Optional: Seed data
+# Optional: Seed with sample data
 npx prisma db seed
 ```
 
