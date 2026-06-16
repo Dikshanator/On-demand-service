@@ -245,36 +245,6 @@ QUICK REFERENCE FOR YOUR COMPUTER
     5. Ask your team members
     6. Create a GitHub issue
 
-
-FILE SIZES & WHAT THEY CONTAIN
-═══════════════════════════════════════════════════════════════════════════════
-
-QUICK_START.md (5.1 KB)
-├─ 5-minute setup checklist
-├─ Common commands reference
-├─ Quick troubleshooting
-└─ Perfect for: First-time setup
-
-SETUP_GUIDE.md (15 KB)
-├─ Complete system requirements
-├─ Detailed step-by-step guide
-├─ Database setup options
-├─ Troubleshooting section
-└─ Perfect for: Full reference
-
-CONFIGURATION_INDEX.md (14 KB)
-├─ Master navigation hub
-├─ All available options
-├─ Use-case based guidance
-└─ Perfect for: Finding what you need
-
-SETUP_COMPLETE.md (8 KB)
-├─ Visual summary
-├─ Setup paths overview
-├─ Quick reference tables
-└─ Perfect for: Quick overview
-
-
 VISUAL MAP OF YOUR PROJECT
 ═══════════════════════════════════════════════════════════════════════════════
 
