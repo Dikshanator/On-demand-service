@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,17 +7,16 @@ import {
   Pressable,
   KeyboardAvoidingView,
   Platform,
-} from "react-native";
-import { useRouter } from "expo-router";
-import { useTheme } from "@/hooks/use-theme";
-import { Spacing } from "@/constants/theme";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { ProgressIndicator } from "@/components/ui/progress-indicator";
-import { useAuth } from "@/context/AuthContext";
-import { Icon } from "@/components/ui/icon";
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import { useTheme } from '@/hooks/use-theme';
+import { Spacing } from '@/constants/theme';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { ProgressIndicator } from '@/components/ui/progress-indicator';
+import { useAuth } from '@/context/AuthContext';
 
-export default function ProviderRegistrationStep1() {
+export default function ClientRegistrationStep1() {
   const theme = useTheme();
   const router = useRouter();
   const { registrationData, updateRegistrationData } = useAuth();
@@ -31,16 +30,16 @@ export default function ProviderRegistrationStep1() {
     header: {
       paddingHorizontal: Spacing.three,
       paddingTop: Spacing.three,
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
     },
     backButton: {
       padding: Spacing.two,
     },
     headerTitle: {
       fontSize: 18,
-      fontWeight: "700",
+      fontWeight: '700',
       color: theme.text,
     },
     stepIndicator: {
@@ -57,7 +56,7 @@ export default function ProviderRegistrationStep1() {
     },
     sectionTitle: {
       fontSize: 24,
-      fontWeight: "700",
+      fontWeight: '700',
       color: theme.text,
       marginBottom: Spacing.one,
     },
@@ -68,10 +67,49 @@ export default function ProviderRegistrationStep1() {
     },
     label: {
       fontSize: 14,
-      fontWeight: "600",
+      fontWeight: '600',
       color: theme.text,
       marginBottom: Spacing.one,
       marginTop: Spacing.two,
+    },
+    termsContainer: {
+      flexDirection: 'row',
+      alignItems: 'flex-start',
+      backgroundColor: theme.backgroundElement,
+      padding: Spacing.three,
+      borderRadius: 12,
+      marginVertical: Spacing.three,
+      borderWidth: 1,
+      borderColor: theme.border,
+    },
+    checkbox: {
+      width: 20,
+      height: 20,
+      borderWidth: 2,
+      borderColor: theme.primary,
+      borderRadius: 4,
+      marginRight: Spacing.two,
+      alignItems: 'center',
+      justifyContent: 'center',
+      marginTop: 2,
+    },
+    checkboxChecked: {
+      backgroundColor: theme.primary,
+    },
+    checkmark: {
+      color: '#FFFFFF',
+      fontWeight: 'bold',
+      fontSize: 14,
+    },
+    termsText: {
+      flex: 1,
+      fontSize: 14,
+      lineHeight: 20,
+      color: theme.textSecondary,
+    },
+    termsLink: {
+      color: theme.primary,
+      fontWeight: '600',
     },
     footer: {
       paddingHorizontal: Spacing.three,
@@ -79,8 +117,8 @@ export default function ProviderRegistrationStep1() {
     },
     loginLink: {
       marginTop: Spacing.two,
-      flexDirection: "row",
-      justifyContent: "center",
+      flexDirection: 'row',
+      justifyContent: 'center',
       gap: Spacing.one,
     },
     loginText: {
@@ -90,36 +128,28 @@ export default function ProviderRegistrationStep1() {
     loginLinkText: {
       color: theme.primary,
       fontSize: 14,
-      fontWeight: "600",
+      fontWeight: '600',
     },
   });
 
   const handleNext = () => {
-    if (
-      !registrationData.fullName ||
-      !registrationData.email ||
-      !registrationData.address ||
-      !registrationData.password
-    ) {
+    if (!registrationData.fullName || !registrationData.email || !registrationData.address || !registrationData.password) {
       return;
     }
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      router.push("/auth/register/provider/step2");
+      router.push('/auth/register/client/step2');
     }, 500);
   };
 
-  const canContinue =
-    registrationData.fullName &&
-    registrationData.email &&
-    registrationData.address &&
-    registrationData.password &&
-    registrationData.password === registrationData.confirmPassword;
+  const canContinue = registrationData.fullName && registrationData.email && 
+                      registrationData.address && registrationData.password && 
+                      registrationData.password === registrationData.confirmPassword;
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
     >
       <ScrollView style={styles.container}>
@@ -127,32 +157,24 @@ export default function ProviderRegistrationStep1() {
           <Pressable style={styles.backButton} onPress={() => router.back()}>
             <Text style={{ fontSize: 20, color: theme.text }}>←</Text>
           </Pressable>
-          <Text style={styles.headerTitle}>Registration</Text>
-          <Text style={styles.stepIndicator}>Step 1 of 4</Text>
+          <Text style={styles.headerTitle}>Create Account</Text>
+          <Text style={styles.stepIndicator}>Step 1 of 2</Text>
         </View>
 
         <View style={styles.content}>
           <View style={styles.progressContainer}>
-            <ProgressIndicator currentStep={1} totalSteps={4} />
+            <ProgressIndicator currentStep={1} totalSteps={2} />
           </View>
 
           <Text style={styles.sectionTitle}>Personal Information</Text>
-          <Text style={styles.sectionSubtitle}>
-            Start with your basic details
-          </Text>
+          <Text style={styles.sectionSubtitle}>Tell us a little about yourself</Text>
 
           <Text style={styles.label}>Full Name</Text>
           <Input
             placeholder="Enter your full name"
             value={registrationData.fullName}
             onChangeText={(text) => updateRegistrationData({ fullName: text })}
-            icon={
-              <Icon
-                name="USER"
-                size="MEDIUM"
-                style={{ color: theme.primary }}
-              />
-            }
+            icon={<Text style={{ fontSize: 18 }}>👤</Text>}
           />
 
           <Text style={styles.label}>Email Address</Text>
@@ -160,28 +182,27 @@ export default function ProviderRegistrationStep1() {
             placeholder="Enter your email address"
             value={registrationData.email}
             onChangeText={(text) => updateRegistrationData({ email: text })}
-            icon={
-              <Icon
-                name="EMAIL"
-                size="MEDIUM"
-                style={{ color: theme.primary }}
-              />
-            }
+            icon={<Text style={{ fontSize: 18 }}>✉️</Text>}
             keyboardType="email-address"
+          />
+          <Text style={{ fontSize: 12, color: theme.textSecondary, marginBottom: Spacing.three }}>
+            We&apos;ll send a verification link to this email
+          </Text>
+          <Text style={styles.label}>Phone Number</Text>
+          <Input
+            placeholder="Enter your phone number"
+            value={registrationData.phone}
+            onChangeText={(text) => updateRegistrationData({ phone: text })}
+            icon={<Text style={{ fontSize: 18 }}>✉️</Text>}
+            keyboardType="phone-pad"
           />
 
           <Text style={styles.label}>Address</Text>
           <Input
-            placeholder="Your city or area"
+            placeholder="Your city or area (e.g. Kathmandu, Lalitpur)"
             value={registrationData.address}
             onChangeText={(text) => updateRegistrationData({ address: text })}
-            icon={
-              <Icon
-                name="LOCATION"
-                size="MEDIUM"
-                style={{ color: theme.primary }}
-              />
-            }
+            icon={<Icon name="LOCATION" size="MEDIUM" style={{ color: theme.primary }} />}
           />
 
           <Text style={styles.label}>Password</Text>
@@ -189,13 +210,7 @@ export default function ProviderRegistrationStep1() {
             placeholder="Create a password"
             value={registrationData.password}
             onChangeText={(text) => updateRegistrationData({ password: text })}
-            icon={
-              <Icon
-                name="LOCK"
-                size="MEDIUM"
-                style={{ color: theme.primary }}
-              />
-            }
+            icon={<Text style={{ fontSize: 18 }}>🔒</Text>}
             secureTextEntry
           />
 
@@ -203,16 +218,8 @@ export default function ProviderRegistrationStep1() {
           <Input
             placeholder="Confirm your password"
             value={registrationData.confirmPassword}
-            onChangeText={(text) =>
-              updateRegistrationData({ confirmPassword: text })
-            }
-            icon={
-              <Icon
-                name="LOCK"
-                size="MEDIUM"
-                style={{ color: theme.primary }}
-              />
-            }
+            onChangeText={(text) => updateRegistrationData({ confirmPassword: text })}
+            icon={<Text style={{ fontSize: 18 }}>🔒</Text>}
             secureTextEntry
           />
         </View>
@@ -226,7 +233,7 @@ export default function ProviderRegistrationStep1() {
           />
           <View style={styles.loginLink}>
             <Text style={styles.loginText}>Already have an account?</Text>
-            <Pressable onPress={() => router.push("/auth/login")}>
+            <Pressable onPress={() => router.push('/auth/login')}>
               <Text style={styles.loginLinkText}>Sign In</Text>
             </Pressable>
           </View>

@@ -163,8 +163,9 @@ export default function LoginScreen() {
               style={{ backgroundColor: theme.backgroundElement }}
             >
               <Icon
-                name=""
+                name="EMAIL"
                 size="MEDIUM"
+                c
                 style={{ color: theme.primary }}
               />
               <TextInput

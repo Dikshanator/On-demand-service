@@ -7,14 +7,10 @@ import {
   type IconSizeKey,
 } from "@/constants/icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useTheme } from "@/hooks/use-theme";
 
 interface IconProps {
   name: IconKey;
   size?: IconSizeKey;
-  // Optional now — if omitted, Icon resolves a color from the current
-  // theme automatically. Pass an explicit color to override (e.g. a
-  // status icon that should always be red/green regardless of theme).
   color?: string;
   className?: string;
   style?: React.CSSProperties;
@@ -99,18 +95,11 @@ function isValidMCIName(name: string | undefined): name is string {
 export const Icon: React.FC<IconProps> = ({
   name,
   size = "MEDIUM",
-  color,
+  color = "#666666",
   className = "",
   style = {},
   testID,
 }) => {
-  // useTheme() returns Colors[theme] directly (see src/hooks/use-theme.ts),
-  // e.g. { text, background, textSecondary, primary, accent, error, ... }
-  // There's no dedicated "icon" key in the theme, so we default to "text"
-  // to match the rest of the app's foreground color.
-  const theme = useTheme();
-  const resolvedColor = color ?? theme.text;
-
   const iconName = Icons[name] as string | undefined;
   const fontSize = IconSizes[size];
 
@@ -120,7 +109,7 @@ export const Icon: React.FC<IconProps> = ({
         testID={testID}
         name={iconName as any}
         size={fontSize}
-        color={resolvedColor}
+        color={color}
         style={style}
       />
     );
@@ -136,7 +125,7 @@ export const Icon: React.FC<IconProps> = ({
       style={{
         fontSize,
         lineHeight: fontSize,
-        color: resolvedColor,
+        color,
         ...style,
       }}
     >
@@ -159,7 +148,7 @@ export const Icon: React.FC<IconProps> = ({
 interface IconBadgeProps {
   name: IconKey;
   bgColor?: string;
-  color?: string; // omit to use theme default
+  color?: string;
   size?: "small" | "medium" | "large";
   className?: string;
 }
@@ -167,7 +156,7 @@ interface IconBadgeProps {
 export const IconBadge: React.FC<IconBadgeProps> = ({
   name,
   bgColor = "bg-gray-100",
-  color,
+  color = "#666666",
   size = "medium",
   className = "",
 }) => {
@@ -216,7 +205,7 @@ export const IconWithText: React.FC<IconWithTextProps> = ({
   name,
   text,
   iconSize = "MEDIUM",
-  color,
+  color = "#666666",
   textClassName = "text-sm text-gray-700",
   gap = "gap-2",
   className = "flex-row items-center",

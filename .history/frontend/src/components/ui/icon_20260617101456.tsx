@@ -7,7 +7,7 @@ import {
   type IconSizeKey,
 } from "@/constants/icons";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-import { useTheme } from "@/hooks/use-theme";
+import { useTheme } from "@/hooks/useTheme"; // adjust path to wherever your hook lives
 
 interface IconProps {
   name: IconKey;
@@ -104,12 +104,12 @@ export const Icon: React.FC<IconProps> = ({
   style = {},
   testID,
 }) => {
-  // useTheme() returns Colors[theme] directly (see src/hooks/use-theme.ts),
-  // e.g. { text, background, textSecondary, primary, accent, error, ... }
-  // There's no dedicated "icon" key in the theme, so we default to "text"
-  // to match the rest of the app's foreground color.
-  const theme = useTheme();
-  const resolvedColor = color ?? theme.text;
+  // Pull current theme; expects something like { colors: { icon: "#..." } }
+  // or { colors: { text: "#..." } } depending on what your theme object
+  // exposes. Adjust the property accessed below to match your actual
+  // theme shape.
+  const { colors } = useTheme();
+  const resolvedColor = color ?? colors.icon ?? colors.text ?? "#666666";
 
   const iconName = Icons[name] as string | undefined;
   const fontSize = IconSizes[size];

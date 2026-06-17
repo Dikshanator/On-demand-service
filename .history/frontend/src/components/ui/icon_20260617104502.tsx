@@ -6,7 +6,7 @@ import {
   type IconKey,
   type IconSizeKey,
 } from "@/constants/icons";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { MaterialIcons } from "@expo/vector-icons";
 import { useTheme } from "@/hooks/use-theme";
 
 interface IconProps {

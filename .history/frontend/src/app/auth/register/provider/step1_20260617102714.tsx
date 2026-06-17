@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,15 +7,15 @@ import {
   Pressable,
   KeyboardAvoidingView,
   Platform,
-} from "react-native";
-import { useRouter } from "expo-router";
-import { useTheme } from "@/hooks/use-theme";
-import { Spacing } from "@/constants/theme";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { ProgressIndicator } from "@/components/ui/progress-indicator";
-import { useAuth } from "@/context/AuthContext";
-import { Icon } from "@/components/ui/icon";
+} from 'react-native';
+import { useRouter } from 'expo-router';
+import { useTheme } from '@/hooks/use-theme';
+import { Spacing } from '@/constants/theme';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { ProgressIndicator } from '@/components/ui/progress-indicator';
+import { useAuth } from '@/context/AuthContext';
+import {Icon} from '@/'
 
 export default function ProviderRegistrationStep1() {
   const theme = useTheme();
@@ -31,16 +31,16 @@ export default function ProviderRegistrationStep1() {
     header: {
       paddingHorizontal: Spacing.three,
       paddingTop: Spacing.three,
-      flexDirection: "row",
-      justifyContent: "space-between",
-      alignItems: "center",
+      flexDirection: 'row',
+      justifyContent: 'space-between',
+      alignItems: 'center',
     },
     backButton: {
       padding: Spacing.two,
     },
     headerTitle: {
       fontSize: 18,
-      fontWeight: "700",
+      fontWeight: '700',
       color: theme.text,
     },
     stepIndicator: {
@@ -57,7 +57,7 @@ export default function ProviderRegistrationStep1() {
     },
     sectionTitle: {
       fontSize: 24,
-      fontWeight: "700",
+      fontWeight: '700',
       color: theme.text,
       marginBottom: Spacing.one,
     },
@@ -68,7 +68,7 @@ export default function ProviderRegistrationStep1() {
     },
     label: {
       fontSize: 14,
-      fontWeight: "600",
+      fontWeight: '600',
       color: theme.text,
       marginBottom: Spacing.one,
       marginTop: Spacing.two,
@@ -79,8 +79,8 @@ export default function ProviderRegistrationStep1() {
     },
     loginLink: {
       marginTop: Spacing.two,
-      flexDirection: "row",
-      justifyContent: "center",
+      flexDirection: 'row',
+      justifyContent: 'center',
       gap: Spacing.one,
     },
     loginText: {
@@ -90,36 +90,28 @@ export default function ProviderRegistrationStep1() {
     loginLinkText: {
       color: theme.primary,
       fontSize: 14,
-      fontWeight: "600",
+      fontWeight: '600',
     },
   });
 
   const handleNext = () => {
-    if (
-      !registrationData.fullName ||
-      !registrationData.email ||
-      !registrationData.address ||
-      !registrationData.password
-    ) {
+    if (!registrationData.fullName || !registrationData.email || !registrationData.address || !registrationData.password) {
       return;
     }
     setIsLoading(true);
     setTimeout(() => {
       setIsLoading(false);
-      router.push("/auth/register/provider/step2");
+      router.push('/auth/register/provider/step2');
     }, 500);
   };
 
-  const canContinue =
-    registrationData.fullName &&
-    registrationData.email &&
-    registrationData.address &&
-    registrationData.password &&
-    registrationData.password === registrationData.confirmPassword;
+  const canContinue = registrationData.fullName && registrationData.email && 
+                      registrationData.address && registrationData.password && 
+                      registrationData.password === registrationData.confirmPassword;
 
   return (
     <KeyboardAvoidingView
-      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
       style={styles.container}
     >
       <ScrollView style={styles.container}>
@@ -137,22 +129,14 @@ export default function ProviderRegistrationStep1() {
           </View>
 
           <Text style={styles.sectionTitle}>Personal Information</Text>
-          <Text style={styles.sectionSubtitle}>
-            Start with your basic details
-          </Text>
+          <Text style={styles.sectionSubtitle}>Start with your basic details</Text>
 
           <Text style={styles.label}>Full Name</Text>
           <Input
             placeholder="Enter your full name"
             value={registrationData.fullName}
             onChangeText={(text) => updateRegistrationData({ fullName: text })}
-            icon={
-              <Icon
-                name="USER"
-                size="MEDIUM"
-                style={{ color: theme.primary }}
-              />
-            }
+            icon={<Icon name="USER" size="MEDIUM" style={{ color: theme.primary }} />}
           />
 
           <Text style={styles.label}>Email Address</Text>
@@ -160,13 +144,7 @@ export default function ProviderRegistrationStep1() {
             placeholder="Enter your email address"
             value={registrationData.email}
             onChangeText={(text) => updateRegistrationData({ email: text })}
-            icon={
-              <Icon
-                name="EMAIL"
-                size="MEDIUM"
-                style={{ color: theme.primary }}
-              />
-            }
+            icon={<Icon name="EMAIL" size="MEDIUM" style={{ color: theme.primary }} />}
             keyboardType="email-address"
           />
 
@@ -175,13 +153,7 @@ export default function ProviderRegistrationStep1() {
             placeholder="Your city or area"
             value={registrationData.address}
             onChangeText={(text) => updateRegistrationData({ address: text })}
-            icon={
-              <Icon
-                name="LOCATION"
-                size="MEDIUM"
-                style={{ color: theme.primary }}
-              />
-            }
+            icon={<Icon name="LOCATION" size="MEDIUM" style={{ color: theme.primary }} />}
           />
 
           <Text style={styles.label}>Password</Text>
@@ -189,13 +161,7 @@ export default function ProviderRegistrationStep1() {
             placeholder="Create a password"
             value={registrationData.password}
             onChangeText={(text) => updateRegistrationData({ password: text })}
-            icon={
-              <Icon
-                name="LOCK"
-                size="MEDIUM"
-                style={{ color: theme.primary }}
-              />
-            }
+            icon={<Icon name="LOCK" size="MEDIUM" style={{ color: theme.primary }} />}
             secureTextEntry
           />
 
@@ -203,16 +169,8 @@ export default function ProviderRegistrationStep1() {
           <Input
             placeholder="Confirm your password"
             value={registrationData.confirmPassword}
-            onChangeText={(text) =>
-              updateRegistrationData({ confirmPassword: text })
-            }
-            icon={
-              <Icon
-                name="LOCK"
-                size="MEDIUM"
-                style={{ color: theme.primary }}
-              />
-            }
+            onChangeText={(text) => updateRegistrationData({ confirmPassword: text })}
+            icon={<Icon name="LOCK" size="MEDIUM" style={{ color: theme.primary }} />}
             secureTextEntry
           />
         </View>
@@ -226,7 +184,7 @@ export default function ProviderRegistrationStep1() {
           />
           <View style={styles.loginLink}>
             <Text style={styles.loginText}>Already have an account?</Text>
-            <Pressable onPress={() => router.push("/auth/login")}>
+            <Pressable onPress={() => router.push('/auth/login')}>
               <Text style={styles.loginLinkText}>Sign In</Text>
             </Pressable>
           </View>

@@ -91,7 +91,7 @@ export default function LoginScreen() {
               borderColor: theme.border,
             }}
           >
-            <Icon name="HOME" size="LARGE" style={{ color: theme.primary }} />
+            <Icon name="HOME" size="S" style={{ color: theme.primary }} />
           </View>
 
           {/* Logo Text */}
@@ -133,11 +133,7 @@ export default function LoginScreen() {
               className="flex-row items-center rounded-2xl pl-4 pr-4"
               style={{ backgroundColor: theme.backgroundElement }}
             >
-              <Icon
-                name="EMAIL"
-                size="MEDIUM"
-                style={{ color: theme.primary }}
-              />
+              <Text className="text-lg mr-3">✉️</Text>
               <TextInput
                 placeholder="Email or phone number"
                 value={email}
@@ -162,11 +158,7 @@ export default function LoginScreen() {
               className="flex-row items-center rounded-2xl pl-4 pr-4"
               style={{ backgroundColor: theme.backgroundElement }}
             >
-              <Icon
-                name=""
-                size="MEDIUM"
-                style={{ color: theme.primary }}
-              />
+              <Text className="text-lg mr-3">🔒</Text>
               <TextInput
                 placeholder="Password"
                 value={password}

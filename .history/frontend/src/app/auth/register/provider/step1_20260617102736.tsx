@@ -15,7 +15,12 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { ProgressIndicator } from "@/components/ui/progress-indicator";
 import { useAuth } from "@/context/AuthContext";
-import { Icon } from "@/components/ui/icon";
+import {
+  Icons,
+  IconSizes,
+  type IconKey,
+  type IconSizeKey,
+} from "@/constants/icons";
 
 export default function ProviderRegistrationStep1() {
   const theme = useTheme();

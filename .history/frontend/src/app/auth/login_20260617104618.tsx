@@ -163,7 +163,7 @@ export default function LoginScreen() {
               style={{ backgroundColor: theme.backgroundElement }}
             >
               <Icon
-                name=""
+                name="Password"
                 size="MEDIUM"
                 style={{ color: theme.primary }}
               />
