@@ -57,7 +57,7 @@ export default function RoleSelectionScreen() {
         {/* Brand Text */}
         <Text
           className="text-xs font-bold tracking-widest uppercase mb-4"
-          style={{ color: theme.text }}
+          style={{ color: theme.accent }}
         >
           HAMROSEWA
         </Text>
@@ -112,7 +112,8 @@ export default function RoleSelectionScreen() {
               className="w-12 h-12 rounded-full items-center justify-center mr-4"
               style={{ backgroundColor: theme.primary }}
             >
-              <Icon name="USER" size="LARGE" style={{ color: "white" }} />
+              {/* User icon - TODO: Replace with user icon asset */}
+              <Icon name="USER" size="LARGE" />
             </View>
             <View className="flex-1">
               <Text
@@ -151,11 +152,7 @@ export default function RoleSelectionScreen() {
               style={{ backgroundColor: theme.primary }}
             >
               {/* Professional icon - TODO: Replace with briefcase icon asset */}
-              <Icon
-                name="PROFESSIONAL"
-                size="LARGE"
-                style={{ color: "white" }}
-              />
+              <Icon name="PROFESSIONAL" size="LARGE" />
             </View>
             <View className="flex-1">
               <Text

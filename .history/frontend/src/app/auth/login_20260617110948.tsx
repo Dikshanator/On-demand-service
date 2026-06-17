@@ -278,7 +278,7 @@ export default function LoginScreen() {
             <Pressable onPress={handleSignup}>
               <Text
                 className="text-sm font-semibold"
-                style={{ color: theme.accent }}
+                style={{ color: theme.primary }}
               >
                 Create Account
               </Text>

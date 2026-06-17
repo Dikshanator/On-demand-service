@@ -177,7 +177,7 @@ export default function ProviderRegistrationStep1() {
             onChangeText={(text) => updateRegistrationData({ address: text })}
             icon={
               <Icon
-                name="LOCATION"
+                name="EMAIL"
                 size="MEDIUM"
                 style={{ color: theme.primary }}
               />
@@ -191,7 +191,7 @@ export default function ProviderRegistrationStep1() {
             onChangeText={(text) => updateRegistrationData({ password: text })}
             icon={
               <Icon
-                name="LOCK"
+                name="A"
                 size="MEDIUM"
                 style={{ color: theme.primary }}
               />
@@ -227,9 +227,7 @@ export default function ProviderRegistrationStep1() {
           <View style={styles.loginLink}>
             <Text style={styles.loginText}>Already have an account?</Text>
             <Pressable onPress={() => router.push("/auth/login")}>
-              <Text style={[styles.loginLinkText, { color: theme.accent }]}>
-                Sign In
-              </Text>
+              <Text style={styles.loginLinkText}>Sign In</Text>
             </Pressable>
           </View>
         </View>

@@ -272,13 +272,13 @@ export default function LoginScreen() {
         {/* Sign Up Link */}
         <View className="items-center pb-8">
           <View className="flex-row gap-1">
-            <Text className="text-sm" style={{ color: theme.textSecondary }}>
+            <Text className="text-sm" style={{ color: theme.accent }}>
               Don&apos;t have an account?
             </Text>
             <Pressable onPress={handleSignup}>
               <Text
                 className="text-sm font-semibold"
-                style={{ color: theme.accent }}
+                style={{ color: theme.primary }}
               >
                 Create Account
               </Text>

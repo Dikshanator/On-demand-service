@@ -151,11 +151,7 @@ export default function RoleSelectionScreen() {
               style={{ backgroundColor: theme.primary }}
             >
               {/* Professional icon - TODO: Replace with briefcase icon asset */}
-              <Icon
-                name="PROFESSIONAL"
-                size="LARGE"
-                style={{ color: "white" }}
-              />
+              <Icon name="PROFESSIONAL" size="LARGE" />
             </View>
             <View className="flex-1">
               <Text

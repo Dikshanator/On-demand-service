@@ -227,9 +227,7 @@ export default function ProviderRegistrationStep1() {
           <View style={styles.loginLink}>
             <Text style={styles.loginText}>Already have an account?</Text>
             <Pressable onPress={() => router.push("/auth/login")}>
-              <Text style={[styles.loginLinkText, { color: theme.accent }]}>
-                Sign In
-              </Text>
+              <Text style={styles.loginLinkText} style=>Sign In</Text>
             </Pressable>
           </View>
         </View>
